@@ -227,6 +227,7 @@
             this.Name = "frmRegsiter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
+            this.Load += new System.EventHandler(this.frmRegsiter_Load);
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
             this.panel1.ResumeLayout(false);

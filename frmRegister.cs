@@ -50,5 +50,10 @@ namespace EDP_WinProject102
         {
 
         }
+
+        private void frmRegsiter_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
