@@ -51,5 +51,12 @@ namespace EDP_WinProject102
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            frmForgotPassword myForgotPassword = new frmForgotPassword();
+            myForgotPassword.Show();
+            this.FindForm().Hide();
+        }
     }
 }

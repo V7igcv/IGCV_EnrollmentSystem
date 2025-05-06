@@ -76,6 +76,18 @@
     <Compile Include="frmEvaluations.Designer.cs">
       <DependentUpon>frmEvaluations.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmForgotPassword.Designer.cs">
+      <DependentUpon>frmForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmForgotPassword2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmForgotPassword2.Designer.cs">
+      <DependentUpon>frmForgotPassword2.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGrades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +164,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEvaluations.resx">
       <DependentUpon>frmEvaluations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmForgotPassword.resx">
+      <DependentUpon>frmForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmForgotPassword2.resx">
+      <DependentUpon>frmForgotPassword2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGrades.resx">
       <DependentUpon>frmGrades.cs</DependentUpon>

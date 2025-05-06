@@ -55,5 +55,10 @@ namespace EDP_WinProject102
         {
 
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
