@@ -30,14 +30,14 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.loginPanel = new System.Windows.Forms.Panel();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.loginPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -56,16 +56,24 @@
             // loginPanel
             // 
             this.loginPanel.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.loginPanel.Controls.Add(this.textBox1);
+            this.loginPanel.Controls.Add(this.txtConfirmPassword);
             this.loginPanel.Controls.Add(this.label8);
             this.loginPanel.Controls.Add(this.label6);
-            this.loginPanel.Controls.Add(this.textBox2);
+            this.loginPanel.Controls.Add(this.txtNewPassword);
             this.loginPanel.Controls.Add(this.label5);
             this.loginPanel.Controls.Add(this.btnLogin);
             this.loginPanel.Location = new System.Drawing.Point(68, 130);
             this.loginPanel.Name = "loginPanel";
             this.loginPanel.Size = new System.Drawing.Size(328, 255);
             this.loginPanel.TabIndex = 6;
+            // 
+            // txtConfirmPassword
+            // 
+            this.txtConfirmPassword.Location = new System.Drawing.Point(58, 112);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
+            this.txtConfirmPassword.Size = new System.Drawing.Size(213, 22);
+            this.txtConfirmPassword.TabIndex = 14;
             // 
             // label8
             // 
@@ -88,13 +96,13 @@
             this.label6.Text = "New Password";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // textBox2
+            // txtNewPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(57, 41);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(213, 22);
-            this.textBox2.TabIndex = 10;
+            this.txtNewPassword.Location = new System.Drawing.Point(57, 41);
+            this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.PasswordChar = '*';
+            this.txtNewPassword.Size = new System.Drawing.Size(213, 22);
+            this.txtNewPassword.TabIndex = 10;
             // 
             // label5
             // 
@@ -142,14 +150,6 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(58, 112);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(213, 22);
-            this.textBox1.TabIndex = 14;
-            // 
             // frmForgotPassword2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -176,10 +176,10 @@
         private System.Windows.Forms.Panel loginPanel;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNewPassword;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtConfirmPassword;
     }
 }

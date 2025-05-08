@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EDP_WinProject102;
 
 namespace EDP_WinProject102
 {
@@ -38,9 +39,21 @@ namespace EDP_WinProject102
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            frmLogin myLogin = new frmLogin();
-            myLogin.Show();
-            this.FindForm().Hide();
+            // Clear session data if used
+            Session.Clear();
+
+            // Confirm logout (optional)
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                frmLogin loginForm = new frmLogin();
+                loginForm.Show();
+
+                // Close the parent form of the sidebar (assumes it's hosted in a form)
+                Form parentForm = this.FindForm();
+                parentForm?.Close();
+            }
         }
 
         private void btnEnrollments_Click(object sender, EventArgs e)

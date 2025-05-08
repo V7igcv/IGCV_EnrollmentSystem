@@ -29,9 +29,33 @@ namespace EDP_WinProject102
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            string firstName = txtFirstName.Text.Trim();
+            string lastName = txtLastName.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string password = txtConfirmPassword.Text;
+            string confirmPassword = txtConfirmPassword.Text;
+            DateTime birthdate = dtpBirthdate.Value;
+
+            DBManager db = new DBManager();
+
+            if (password != confirmPassword)
+            {
+                MessageBox.Show("Passwords do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (db.EmailExists(email))
+            {
+                MessageBox.Show("Email already registered.", "Duplicate Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            db.RegisterUser(firstName, lastName, email, password, birthdate);
+            MessageBox.Show("Registration successful! You can now log in.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             frmLogin myLogin = new frmLogin();
             myLogin.Show();
-            this.FindForm().Hide();
+            this.Close();
         }
 
         private void label5_Click(object sender, EventArgs e)
