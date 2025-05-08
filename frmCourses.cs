@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace EDP_WinProject102
 {
@@ -15,11 +17,144 @@ namespace EDP_WinProject102
         public frmCourses()
         {
             InitializeComponent();
+            LoadCoursesIntoGrid();
+            DatabaseHelper.LoadDepartmentsIntoComboBox(department);
         }
 
         private void label14_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmCourses_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadCoursesIntoGrid()
+        {
+            // Set up the connection string
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+
+            // Create a new MySQL connection
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    // Define the stored procedure to fetch course details
+                    string query = "CALL GetCourseDetails()"; // Change the argument here as needed
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    // Create a data adapter and fill a data table with the result
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    // Set the DataGridView's data source to the data table
+                    CoursesTable.DataSource = dt;
+
+                    // Set custom column headers (if needed)
+                    CoursesTable.Columns["course_id"].HeaderText = "Course ID";
+                    CoursesTable.Columns["course_name"].HeaderText = "Course Name";
+                    CoursesTable.Columns["department_id"].HeaderText = "Department ID";
+
+                    // Make column headers bold
+                    CoursesTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8, FontStyle.Bold);
+
+                    // Auto size columns to fit data
+                    CoursesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                catch (Exception ex)
+                {
+                    // Show an error message if something goes wrong
+                    MessageBox.Show("Failed to load data: " + ex.Message);
+                }
+            }
+        }
+
+        private void AddCourseToDatabase()
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                INSERT INTO courses
+                    (course_name, department_id) 
+                VALUES 
+                    (@CourseName, @DepartmentID)";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@CourseName", course.Text);
+                    cmd.Parameters.AddWithValue("@DepartmentID", department.SelectedValue);
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Course added successfully!");
+
+                    LoadCoursesIntoGrid(); // Refresh the grid
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error while adding course: " + ex.Message);
+                }
+            }
+        }
+
+        private void SubmitCourse_Click(object sender, EventArgs e)
+        {
+            // Basic validation
+            if (string.IsNullOrWhiteSpace(course.Text))
+            {
+                MessageBox.Show("Please fill in all the fields.");
+                return;
+            }
+
+            AddCourseToDatabase();
+        }
+
+        private void btnDeleteCourse_Click(object sender, EventArgs e)
+        {
+            if (CoursesTable.CurrentRow != null)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete the selected row?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    int userId = Convert.ToInt32(CoursesTable.CurrentRow.Cells["course_id"].Value);
+                    SoftDeleteUser(userId);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to delete.");
+            }
+        }
+
+        private void SoftDeleteUser(int userId)
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "UPDATE courses SET deleted_at = NOW() WHERE course_id = @UserId";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Row deleted successfully.");
+                    LoadCoursesIntoGrid(); // Refresh the table
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error while deleting: " + ex.Message);
+                }
+            }
         }
     }
 }

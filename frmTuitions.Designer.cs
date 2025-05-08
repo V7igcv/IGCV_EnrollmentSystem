@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.TuitionsTable = new System.Windows.Forms.DataGridView();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.SubmitTuition = new System.Windows.Forms.Button();
+            this.course = new System.Windows.Forms.ComboBox();
+            this.year = new System.Windows.Forms.TextBox();
+            this.amount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,8 +42,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.topBar1 = new EDP_WinProject102.TopBar();
             this.sideBar1 = new EDP_WinProject102.SideBar();
+            this.btnDeleteTuition = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TuitionsTable)).BeginInit();
             this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +54,9 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.btnEdit);
+            this.panel1.Controls.Add(this.btnDeleteTuition);
+            this.panel1.Controls.Add(this.TuitionsTable);
             this.panel1.Controls.Add(this.panel18);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(201, 84);
@@ -60,24 +64,24 @@
             this.panel1.Size = new System.Drawing.Size(1096, 746);
             this.panel1.TabIndex = 12;
             // 
-            // dataGridView1
+            // TuitionsTable
             // 
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(44, 360);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(991, 718);
-            this.dataGridView1.TabIndex = 13;
+            this.TuitionsTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TuitionsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TuitionsTable.Location = new System.Drawing.Point(44, 386);
+            this.TuitionsTable.Name = "TuitionsTable";
+            this.TuitionsTable.RowHeadersWidth = 51;
+            this.TuitionsTable.RowTemplate.Height = 24;
+            this.TuitionsTable.Size = new System.Drawing.Size(991, 363);
+            this.TuitionsTable.TabIndex = 13;
             // 
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel18.Controls.Add(this.button1);
-            this.panel18.Controls.Add(this.comboBox2);
-            this.panel18.Controls.Add(this.textBox4);
-            this.panel18.Controls.Add(this.textBox2);
+            this.panel18.Controls.Add(this.SubmitTuition);
+            this.panel18.Controls.Add(this.course);
+            this.panel18.Controls.Add(this.year);
+            this.panel18.Controls.Add(this.amount);
             this.panel18.Controls.Add(this.label6);
             this.panel18.Controls.Add(this.label2);
             this.panel18.Controls.Add(this.label1);
@@ -87,42 +91,43 @@
             this.panel18.Size = new System.Drawing.Size(991, 251);
             this.panel18.TabIndex = 12;
             // 
-            // button1
+            // SubmitTuition
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.button1.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(723, 103);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(202, 34);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = false;
+            this.SubmitTuition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.SubmitTuition.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitTuition.ForeColor = System.Drawing.SystemColors.Control;
+            this.SubmitTuition.Location = new System.Drawing.Point(723, 103);
+            this.SubmitTuition.Name = "SubmitTuition";
+            this.SubmitTuition.Size = new System.Drawing.Size(202, 34);
+            this.SubmitTuition.TabIndex = 34;
+            this.SubmitTuition.Text = "Submit";
+            this.SubmitTuition.UseVisualStyleBackColor = false;
+            this.SubmitTuition.Click += new System.EventHandler(this.SubmitTuition_Click);
             // 
-            // comboBox2
+            // course
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(51, 103);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(293, 30);
-            this.comboBox2.TabIndex = 33;
+            this.course.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.course.FormattingEnabled = true;
+            this.course.Location = new System.Drawing.Point(51, 103);
+            this.course.Name = "course";
+            this.course.Size = new System.Drawing.Size(293, 30);
+            this.course.TabIndex = 33;
             // 
-            // textBox4
+            // year
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(400, 105);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(267, 28);
-            this.textBox4.TabIndex = 24;
+            this.year.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.year.Location = new System.Drawing.Point(400, 105);
+            this.year.Name = "year";
+            this.year.Size = new System.Drawing.Size(267, 28);
+            this.year.TabIndex = 24;
             // 
-            // textBox2
+            // amount
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(51, 169);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(293, 28);
-            this.textBox2.TabIndex = 22;
+            this.amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amount.Location = new System.Drawing.Point(51, 169);
+            this.amount.Name = "amount";
+            this.amount.Size = new System.Drawing.Size(293, 28);
+            this.amount.TabIndex = 22;
             // 
             // label6
             // 
@@ -189,6 +194,32 @@
             this.sideBar1.Size = new System.Drawing.Size(203, 831);
             this.sideBar1.TabIndex = 14;
             // 
+            // btnDeleteTuition
+            // 
+            this.btnDeleteTuition.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDeleteTuition.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteTuition.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnDeleteTuition.Location = new System.Drawing.Point(856, 344);
+            this.btnDeleteTuition.Name = "btnDeleteTuition";
+            this.btnDeleteTuition.Size = new System.Drawing.Size(179, 36);
+            this.btnDeleteTuition.TabIndex = 35;
+            this.btnDeleteTuition.Text = "Delete Selected";
+            this.btnDeleteTuition.UseVisualStyleBackColor = false;
+            this.btnDeleteTuition.Click += new System.EventHandler(this.btnDeleteTuition_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEdit.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnEdit.Location = new System.Drawing.Point(671, 344);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(179, 36);
+            this.btnEdit.TabIndex = 40;
+            this.btnEdit.Text = "Edit Selected";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // frmTuitions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -205,7 +236,7 @@
             this.Load += new System.EventHandler(this.frmTuitions_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TuitionsTable)).EndInit();
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             this.ResumeLayout(false);
@@ -215,10 +246,10 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView TuitionsTable;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox year;
+        private System.Windows.Forms.TextBox amount;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -226,7 +257,9 @@
         private System.Windows.Forms.Label label5;
         private TopBar topBar1;
         private SideBar sideBar1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox course;
+        private System.Windows.Forms.Button SubmitTuition;
+        private System.Windows.Forms.Button btnDeleteTuition;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

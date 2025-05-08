@@ -31,10 +31,10 @@
             this.topBar1 = new EDP_WinProject102.TopBar();
             this.sideBar1 = new EDP_WinProject102.SideBar();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.EvaluationsTable = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EvaluationsTable)).BeginInit();
             this.SuspendLayout();
             // 
             // topBar1
@@ -57,23 +57,23 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.EvaluationsTable);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(203, 84);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 746);
             this.panel1.TabIndex = 21;
             // 
-            // dataGridView1
+            // EvaluationsTable
             // 
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(44, 73);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(991, 718);
-            this.dataGridView1.TabIndex = 13;
+            this.EvaluationsTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.EvaluationsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.EvaluationsTable.Location = new System.Drawing.Point(44, 73);
+            this.EvaluationsTable.Name = "EvaluationsTable";
+            this.EvaluationsTable.RowHeadersWidth = 51;
+            this.EvaluationsTable.RowTemplate.Height = 24;
+            this.EvaluationsTable.Size = new System.Drawing.Size(991, 648);
+            this.EvaluationsTable.TabIndex = 13;
             // 
             // label5
             // 
@@ -101,7 +101,7 @@
             this.Load += new System.EventHandler(this.frmEvaluations_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EvaluationsTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,7 +110,7 @@
         private TopBar topBar1;
         private SideBar sideBar1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView EvaluationsTable;
         private System.Windows.Forms.Label label5;
     }
 }

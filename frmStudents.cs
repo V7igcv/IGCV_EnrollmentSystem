@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace EDP_WinProject102
         public frmStudents()
         {
             InitializeComponent();
+            LoadStudentsIntoGrid();
+
+            // Attach the KeyPress event handlers
+            phone.KeyPress += phone_KeyPress;
+            student_no.KeyPress += student_no_KeyPress;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -49,12 +55,218 @@ namespace EDP_WinProject102
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Basic validation
+            if (string.IsNullOrWhiteSpace(fname.Text) || string.IsNullOrWhiteSpace(lname.Text) ||
+                string.IsNullOrWhiteSpace(email.Text) || string.IsNullOrWhiteSpace(phone.Text) ||
+                string.IsNullOrWhiteSpace(address.Text) || string.IsNullOrWhiteSpace(student_no.Text))
+            {
+                MessageBox.Show("Please fill in all the fields.");
+                return;
+            }
 
+            // Validate phone and student number are digits only
+            if (!phone.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Phone number must contain digits only.");
+                return;
+            }
+
+            if (!student_no.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Student number must contain digits only.");
+                return;
+            }
+
+            AddStudentToDatabase();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmStudents_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void LoadStudentsIntoGrid()
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                        SELECT 
+                            student_id, 
+                            student_fname, 
+                            student_lname, 
+                            age, 
+                            email, 
+                            phone, 
+                            address, 
+                            student_number,
+                            GetTotalTuition(student_id) AS total_tuition,
+                            GetOutstandingBalance(student_id) AS outstanding_balance
+                        FROM 
+                            students
+                        WHERE 
+                            deleted_at IS NULL";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    StudentsTable.DataSource = dt;
+
+                    // Set custom column headers
+                    StudentsTable.Columns["student_id"].HeaderText = "Student ID";
+                    StudentsTable.Columns["student_fname"].HeaderText = "First Name";
+                    StudentsTable.Columns["student_lname"].HeaderText = "Last Name";
+                    StudentsTable.Columns["age"].HeaderText = "Age";
+                    StudentsTable.Columns["email"].HeaderText = "Email";
+                    StudentsTable.Columns["phone"].HeaderText = "Phone Number";
+                    StudentsTable.Columns["address"].HeaderText = "Address";
+                    StudentsTable.Columns["student_number"].HeaderText = "Student Number";
+                    StudentsTable.Columns["total_tuition"].HeaderText = "Total Tuition (₱)";
+                    StudentsTable.Columns["outstanding_balance"].HeaderText = "Outstanding Balance (₱)";
+
+                    // Make column headers bold
+                    StudentsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8, FontStyle.Bold);
+
+                    // Adjust the DataGridView height based on the number of rows
+                    int maxHeight = 900; // You can set this to any value you want
+                    int desiredHeight = StudentsTable.ColumnHeadersHeight +
+                        StudentsTable.Rows.GetRowsHeight(DataGridViewElementStates.Visible);
+
+                    // Set the height of the DataGridView (but not beyond maxHeight)
+                    StudentsTable.Height = Math.Min(desiredHeight, maxHeight);
+
+                    // Enable vertical scroll if the content exceeds the max height
+                    StudentsTable.ScrollBars = ScrollBars.Vertical;
+
+                    StudentsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to load data: " + ex.Message);
+                }
+            }
+        }
+
+        private void phone_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddStudentToDatabase()
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                INSERT INTO students 
+                    (student_fname, student_lname, age, email, phone, address, student_number) 
+                VALUES 
+                    (@FirstName, @LastName, @Age, @Email, @Phone, @Address, @StudentNumber)";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@FirstName", fname.Text);
+                    cmd.Parameters.AddWithValue("@LastName", lname.Text);
+                    cmd.Parameters.AddWithValue("@Age", age.Value);
+                    cmd.Parameters.AddWithValue("@Email", email.Text);
+                    cmd.Parameters.AddWithValue("@Phone", phone.Text);
+                    cmd.Parameters.AddWithValue("@Address", address.Text);
+                    cmd.Parameters.AddWithValue("@StudentNumber", student_no.Text);
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Student added successfully!");
+
+                    LoadStudentsIntoGrid(); // Refresh the grid
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error while adding student: " + ex.Message);
+                }
+            }
+        }
+        private void phone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
+
+        private void student_no_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
+
+        private void btnDeleteStudent_Click(object sender, EventArgs e)
+        {
+            if (StudentsTable.CurrentRow != null)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete the selected row?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    int userId = Convert.ToInt32(StudentsTable.CurrentRow.Cells["student_id"].Value);
+                    SoftDeleteUser(userId);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to delete.");
+            }
+        }
+
+        private void SoftDeleteUser(int userId)
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "UPDATE students SET deleted_at = NOW() WHERE student_id = @UserId";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Row deleted successfully.");
+                    LoadStudentsIntoGrid(); // Refresh the table
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error while deleting: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (StudentsTable.CurrentRow != null)
+            {
+                int studentId = Convert.ToInt32(StudentsTable.CurrentRow.Cells["student_id"].Value);
+                string fname = StudentsTable.CurrentRow.Cells["student_fname"].Value.ToString();
+                string lname = StudentsTable.CurrentRow.Cells["student_lname"].Value.ToString();
+                int age = Convert.ToInt32(StudentsTable.CurrentRow.Cells["age"].Value);
+                string email = StudentsTable.CurrentRow.Cells["email"].Value.ToString();
+                string phone = StudentsTable.CurrentRow.Cells["phone"].Value.ToString();
+                string address = StudentsTable.CurrentRow.Cells["address"].Value.ToString();
+                string studentNumber = StudentsTable.CurrentRow.Cells["student_number"].Value.ToString();
+
+                EditStudent editForm = new EditStudent(studentId, fname, lname, age, email, phone, address, studentNumber);
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    LoadStudentsIntoGrid(); // Refresh data
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a student to edit.");
+            }
         }
     }
 }

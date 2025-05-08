@@ -118,5 +118,12 @@ namespace EDP_WinProject102
             myEvaluations.Show();
             this.FindForm().Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmSystemUsers mySystemUsers = new frmSystemUsers();
+            mySystemUsers.Show();
+            this.FindForm().Hide();
+        }
     }
 }

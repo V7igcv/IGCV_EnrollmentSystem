@@ -99,7 +99,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseHelper.cs" />
     <Compile Include="DBManager.cs" />
+    <Compile Include="EditInstructor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditInstructor.Designer.cs">
+      <DependentUpon>EditInstructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSchedule.Designer.cs">
+      <DependentUpon>EditSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditStudent.Designer.cs">
+      <DependentUpon>EditStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSystemUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSystemUser.Designer.cs">
+      <DependentUpon>EditSystemUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditTuition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTuition.Designer.cs">
+      <DependentUpon>EditTuition.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCourses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +215,12 @@
     <Compile Include="frmStudents.Designer.cs">
       <DependentUpon>frmStudents.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSystemUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSystemUsers.Designer.cs">
+      <DependentUpon>frmSystemUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTuitions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +242,21 @@
     <Compile Include="TopBar.Designer.cs">
       <DependentUpon>TopBar.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditInstructor.resx">
+      <DependentUpon>EditInstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSchedule.resx">
+      <DependentUpon>EditSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditStudent.resx">
+      <DependentUpon>EditStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSystemUser.resx">
+      <DependentUpon>EditSystemUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTuition.resx">
+      <DependentUpon>EditTuition.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCourses.resx">
       <DependentUpon>frmCourses.cs</DependentUpon>
     </EmbeddedResource>
@@ -246,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmStudents.resx">
       <DependentUpon>frmStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSystemUsers.resx">
+      <DependentUpon>frmSystemUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTuitions.resx">
       <DependentUpon>frmTuitions.cs</DependentUpon>

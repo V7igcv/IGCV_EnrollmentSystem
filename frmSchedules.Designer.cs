@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SchedulesTable = new System.Windows.Forms.DataGridView();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.dayofweek = new System.Windows.Forms.ComboBox();
+            this.endtime = new System.Windows.Forms.DateTimePicker();
+            this.starttime = new System.Windows.Forms.DateTimePicker();
+            this.course = new System.Windows.Forms.ComboBox();
+            this.instructor = new System.Windows.Forms.ComboBox();
+            this.SubmitSchedule = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,8 +46,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.sideBar1 = new EDP_WinProject102.SideBar();
             this.topBar1 = new EDP_WinProject102.TopBar();
+            this.btnDeleteSchedule = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SchedulesTable)).BeginInit();
             this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +58,9 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.btnEdit);
+            this.panel1.Controls.Add(this.btnDeleteSchedule);
+            this.panel1.Controls.Add(this.SchedulesTable);
             this.panel1.Controls.Add(this.panel18);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(201, 83);
@@ -64,26 +68,26 @@
             this.panel1.Size = new System.Drawing.Size(1096, 746);
             this.panel1.TabIndex = 17;
             // 
-            // dataGridView1
+            // SchedulesTable
             // 
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(44, 373);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(991, 718);
-            this.dataGridView1.TabIndex = 13;
+            this.SchedulesTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SchedulesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SchedulesTable.Location = new System.Drawing.Point(44, 404);
+            this.SchedulesTable.Name = "SchedulesTable";
+            this.SchedulesTable.RowHeadersWidth = 51;
+            this.SchedulesTable.RowTemplate.Height = 24;
+            this.SchedulesTable.Size = new System.Drawing.Size(991, 351);
+            this.SchedulesTable.TabIndex = 13;
             // 
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel18.Controls.Add(this.comboBox3);
-            this.panel18.Controls.Add(this.dateTimePicker2);
-            this.panel18.Controls.Add(this.dateTimePicker1);
-            this.panel18.Controls.Add(this.comboBox2);
-            this.panel18.Controls.Add(this.comboBox1);
-            this.panel18.Controls.Add(this.button1);
+            this.panel18.Controls.Add(this.dayofweek);
+            this.panel18.Controls.Add(this.endtime);
+            this.panel18.Controls.Add(this.starttime);
+            this.panel18.Controls.Add(this.course);
+            this.panel18.Controls.Add(this.instructor);
+            this.panel18.Controls.Add(this.SubmitSchedule);
             this.panel18.Controls.Add(this.label8);
             this.panel18.Controls.Add(this.label7);
             this.panel18.Controls.Add(this.label3);
@@ -95,66 +99,67 @@
             this.panel18.Size = new System.Drawing.Size(991, 270);
             this.panel18.TabIndex = 12;
             // 
-            // comboBox3
+            // dayofweek
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(680, 101);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(227, 30);
-            this.comboBox3.TabIndex = 35;
+            this.dayofweek.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dayofweek.FormattingEnabled = true;
+            this.dayofweek.Location = new System.Drawing.Point(680, 101);
+            this.dayofweek.Name = "dayofweek";
+            this.dayofweek.Size = new System.Drawing.Size(227, 30);
+            this.dayofweek.TabIndex = 35;
             // 
-            // dateTimePicker2
+            // endtime
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(411, 169);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.ShowUpDown = true;
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 28);
-            this.dateTimePicker2.TabIndex = 34;
-            this.dateTimePicker2.Value = new System.DateTime(2025, 4, 13, 23, 8, 29, 0);
+            this.endtime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endtime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.endtime.Location = new System.Drawing.Point(411, 169);
+            this.endtime.Name = "endtime";
+            this.endtime.ShowUpDown = true;
+            this.endtime.Size = new System.Drawing.Size(200, 28);
+            this.endtime.TabIndex = 34;
+            this.endtime.Value = new System.DateTime(2025, 4, 13, 23, 8, 29, 0);
             // 
-            // dateTimePicker1
+            // starttime
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(411, 101);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 28);
-            this.dateTimePicker1.TabIndex = 33;
-            this.dateTimePicker1.Value = new System.DateTime(2025, 4, 13, 23, 8, 29, 0);
+            this.starttime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.starttime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.starttime.Location = new System.Drawing.Point(411, 101);
+            this.starttime.Name = "starttime";
+            this.starttime.ShowUpDown = true;
+            this.starttime.Size = new System.Drawing.Size(200, 28);
+            this.starttime.TabIndex = 33;
+            this.starttime.Value = new System.DateTime(2025, 4, 13, 23, 8, 29, 0);
             // 
-            // comboBox2
+            // course
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(51, 169);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(290, 30);
-            this.comboBox2.TabIndex = 32;
+            this.course.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.course.FormattingEnabled = true;
+            this.course.Location = new System.Drawing.Point(51, 169);
+            this.course.Name = "course";
+            this.course.Size = new System.Drawing.Size(290, 30);
+            this.course.TabIndex = 32;
             // 
-            // comboBox1
+            // instructor
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(51, 101);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(290, 30);
-            this.comboBox1.TabIndex = 31;
+            this.instructor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.instructor.FormattingEnabled = true;
+            this.instructor.Location = new System.Drawing.Point(51, 101);
+            this.instructor.Name = "instructor";
+            this.instructor.Size = new System.Drawing.Size(290, 30);
+            this.instructor.TabIndex = 31;
             // 
-            // button1
+            // SubmitSchedule
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.button1.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(695, 169);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(202, 34);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = false;
+            this.SubmitSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.SubmitSchedule.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitSchedule.ForeColor = System.Drawing.SystemColors.Control;
+            this.SubmitSchedule.Location = new System.Drawing.Point(695, 169);
+            this.SubmitSchedule.Name = "SubmitSchedule";
+            this.SubmitSchedule.Size = new System.Drawing.Size(202, 34);
+            this.SubmitSchedule.TabIndex = 30;
+            this.SubmitSchedule.Text = "Submit";
+            this.SubmitSchedule.UseVisualStyleBackColor = false;
+            this.SubmitSchedule.Click += new System.EventHandler(this.SubmitSchedule_Click);
             // 
             // label8
             // 
@@ -243,6 +248,32 @@
             this.topBar1.Size = new System.Drawing.Size(1097, 84);
             this.topBar1.TabIndex = 18;
             // 
+            // btnDeleteSchedule
+            // 
+            this.btnDeleteSchedule.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDeleteSchedule.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteSchedule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnDeleteSchedule.Location = new System.Drawing.Point(856, 362);
+            this.btnDeleteSchedule.Name = "btnDeleteSchedule";
+            this.btnDeleteSchedule.Size = new System.Drawing.Size(179, 36);
+            this.btnDeleteSchedule.TabIndex = 38;
+            this.btnDeleteSchedule.Text = "Delete Selected";
+            this.btnDeleteSchedule.UseVisualStyleBackColor = false;
+            this.btnDeleteSchedule.Click += new System.EventHandler(this.btnDeleteSchedule_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEdit.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnEdit.Location = new System.Drawing.Point(671, 362);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(179, 36);
+            this.btnEdit.TabIndex = 41;
+            this.btnEdit.Text = "Edit Selected";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // frmSchedules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -259,7 +290,7 @@
             this.Load += new System.EventHandler(this.frmSchedules_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SchedulesTable)).EndInit();
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             this.ResumeLayout(false);
@@ -269,7 +300,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView SchedulesTable;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -280,11 +311,13 @@
         private System.Windows.Forms.Label label5;
         private TopBar topBar1;
         private SideBar sideBar1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button SubmitSchedule;
+        private System.Windows.Forms.ComboBox course;
+        private System.Windows.Forms.ComboBox instructor;
+        private System.Windows.Forms.ComboBox dayofweek;
+        private System.Windows.Forms.DateTimePicker endtime;
+        private System.Windows.Forms.DateTimePicker starttime;
+        private System.Windows.Forms.Button btnDeleteSchedule;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
