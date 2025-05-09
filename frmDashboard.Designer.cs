@@ -32,39 +32,45 @@
             this.topBar1 = new EDP_WinProject102.TopBar();
             this.label5 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.InstructorPerDepartmentTable = new System.Windows.Forms.DataGridView();
             this.label15 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
+            this.TInstructors = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.TCourses = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
+            this.TStudents = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.StudentPerCourseTable = new System.Windows.Forms.DataGridView();
             this.label14 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
+            this.TEnrollments = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.sideBar1 = new EDP_WinProject102.SideBar();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.StudentsEnrollmentsTable = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel12.SuspendLayout();
             this.panel19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InstructorPerDepartmentTable)).BeginInit();
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentPerCourseTable)).BeginInit();
             this.panel14.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentsEnrollmentsTable)).BeginInit();
             this.SuspendLayout();
             // 
             // panel12
             // 
             this.panel12.AutoScroll = true;
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel12.Controls.Add(this.panel1);
             this.panel12.Controls.Add(this.topBar1);
             this.panel12.Controls.Add(this.label5);
             this.panel12.Controls.Add(this.panel19);
@@ -75,6 +81,7 @@
             this.panel12.Controls.Add(this.panel14);
             this.panel12.Location = new System.Drawing.Point(201, 0);
             this.panel12.Name = "panel12";
+            this.panel12.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.panel12.Size = new System.Drawing.Size(1100, 837);
             this.panel12.TabIndex = 1;
             this.panel12.Paint += new System.Windows.Forms.PaintEventHandler(this.panel12_Paint);
@@ -100,23 +107,23 @@
             // panel19
             // 
             this.panel19.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel19.Controls.Add(this.dataGridView2);
+            this.panel19.Controls.Add(this.InstructorPerDepartmentTable);
             this.panel19.Controls.Add(this.label15);
             this.panel19.Location = new System.Drawing.Point(50, 437);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(1012, 352);
             this.panel19.TabIndex = 6;
             // 
-            // dataGridView2
+            // InstructorPerDepartmentTable
             // 
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(15, 53);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(983, 283);
-            this.dataGridView2.TabIndex = 14;
+            this.InstructorPerDepartmentTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.InstructorPerDepartmentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.InstructorPerDepartmentTable.Location = new System.Drawing.Point(15, 53);
+            this.InstructorPerDepartmentTable.Name = "InstructorPerDepartmentTable";
+            this.InstructorPerDepartmentTable.RowHeadersWidth = 51;
+            this.InstructorPerDepartmentTable.RowTemplate.Height = 24;
+            this.InstructorPerDepartmentTable.Size = new System.Drawing.Size(983, 283);
+            this.InstructorPerDepartmentTable.TabIndex = 14;
             // 
             // label15
             // 
@@ -131,22 +138,22 @@
             // panel17
             // 
             this.panel17.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel17.Controls.Add(this.label13);
+            this.panel17.Controls.Add(this.TInstructors);
             this.panel17.Controls.Add(this.label9);
             this.panel17.Location = new System.Drawing.Point(302, 296);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(229, 120);
             this.panel17.TabIndex = 3;
             // 
-            // label13
+            // TInstructors
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(177, 63);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(31, 40);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "0";
+            this.TInstructors.AutoSize = true;
+            this.TInstructors.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TInstructors.Location = new System.Drawing.Point(177, 63);
+            this.TInstructors.Name = "TInstructors";
+            this.TInstructors.Size = new System.Drawing.Size(31, 40);
+            this.TInstructors.TabIndex = 12;
+            this.TInstructors.Text = "0";
             // 
             // label9
             // 
@@ -161,22 +168,22 @@
             // panel16
             // 
             this.panel16.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel16.Controls.Add(this.label12);
+            this.panel16.Controls.Add(this.TCourses);
             this.panel16.Controls.Add(this.label7);
             this.panel16.Location = new System.Drawing.Point(302, 159);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(229, 120);
             this.panel16.TabIndex = 2;
             // 
-            // label12
+            // TCourses
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(177, 66);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(31, 40);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "0";
+            this.TCourses.AutoSize = true;
+            this.TCourses.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TCourses.Location = new System.Drawing.Point(177, 66);
+            this.TCourses.Name = "TCourses";
+            this.TCourses.Size = new System.Drawing.Size(31, 40);
+            this.TCourses.TabIndex = 11;
+            this.TCourses.Text = "0";
             // 
             // label7
             // 
@@ -191,22 +198,22 @@
             // panel15
             // 
             this.panel15.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel15.Controls.Add(this.label11);
+            this.panel15.Controls.Add(this.TStudents);
             this.panel15.Controls.Add(this.label8);
             this.panel15.Location = new System.Drawing.Point(50, 296);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(229, 120);
             this.panel15.TabIndex = 2;
             // 
-            // label11
+            // TStudents
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(169, 63);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 40);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "0";
+            this.TStudents.AutoSize = true;
+            this.TStudents.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TStudents.Location = new System.Drawing.Point(169, 63);
+            this.TStudents.Name = "TStudents";
+            this.TStudents.Size = new System.Drawing.Size(31, 40);
+            this.TStudents.TabIndex = 10;
+            this.TStudents.Text = "0";
             // 
             // label8
             // 
@@ -221,23 +228,23 @@
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel18.Controls.Add(this.dataGridView1);
+            this.panel18.Controls.Add(this.StudentPerCourseTable);
             this.panel18.Controls.Add(this.label14);
             this.panel18.Location = new System.Drawing.Point(566, 159);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(496, 257);
             this.panel18.TabIndex = 5;
             // 
-            // dataGridView1
+            // StudentPerCourseTable
             // 
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 57);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(466, 184);
-            this.dataGridView1.TabIndex = 13;
+            this.StudentPerCourseTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.StudentPerCourseTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StudentPerCourseTable.Location = new System.Drawing.Point(16, 57);
+            this.StudentPerCourseTable.Name = "StudentPerCourseTable";
+            this.StudentPerCourseTable.RowHeadersWidth = 51;
+            this.StudentPerCourseTable.RowTemplate.Height = 24;
+            this.StudentPerCourseTable.Size = new System.Drawing.Size(466, 184);
+            this.StudentPerCourseTable.TabIndex = 13;
             // 
             // label14
             // 
@@ -252,22 +259,22 @@
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel14.Controls.Add(this.label10);
+            this.panel14.Controls.Add(this.TEnrollments);
             this.panel14.Controls.Add(this.label6);
             this.panel14.Location = new System.Drawing.Point(50, 159);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(229, 120);
             this.panel14.TabIndex = 1;
             // 
-            // label10
+            // TEnrollments
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(169, 57);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 40);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "0";
+            this.TEnrollments.AutoSize = true;
+            this.TEnrollments.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TEnrollments.Location = new System.Drawing.Point(169, 57);
+            this.TEnrollments.Name = "TEnrollments";
+            this.TEnrollments.Size = new System.Drawing.Size(31, 40);
+            this.TEnrollments.TabIndex = 9;
+            this.TEnrollments.Text = "0";
             // 
             // label6
             // 
@@ -287,6 +294,37 @@
             this.sideBar1.Size = new System.Drawing.Size(203, 831);
             this.sideBar1.TabIndex = 2;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.StudentsEnrollmentsTable);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(50, 811);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1009, 352);
+            this.panel1.TabIndex = 15;
+            // 
+            // StudentsEnrollmentsTable
+            // 
+            this.StudentsEnrollmentsTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.StudentsEnrollmentsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StudentsEnrollmentsTable.Location = new System.Drawing.Point(15, 53);
+            this.StudentsEnrollmentsTable.Name = "StudentsEnrollmentsTable";
+            this.StudentsEnrollmentsTable.RowHeadersWidth = 51;
+            this.StudentsEnrollmentsTable.RowTemplate.Height = 24;
+            this.StudentsEnrollmentsTable.Size = new System.Drawing.Size(983, 283);
+            this.StudentsEnrollmentsTable.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 24);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Students Enrollments";
+            // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -304,7 +342,7 @@
             this.panel12.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InstructorPerDepartmentTable)).EndInit();
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             this.panel16.ResumeLayout(false);
@@ -313,9 +351,12 @@
             this.panel15.PerformLayout();
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentPerCourseTable)).EndInit();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentsEnrollmentsTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -328,21 +369,24 @@
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label TInstructors;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label TCourses;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label TStudents;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label TEnrollments;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView StudentPerCourseTable;
         private SideBar sideBar1;
         private TopBar topBar1;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView InstructorPerDepartmentTable;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView StudentsEnrollmentsTable;
+        private System.Windows.Forms.Label label1;
     }
 }
 

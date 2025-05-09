@@ -31,9 +31,31 @@ namespace EDP_WinProject102
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            frmLogin myLogin = new frmLogin();
-            myLogin.Show();
-            this.FindForm().Hide();
+            string newPassword = txtNewPassword.Text;
+            string confirmPassword = txtConfirmPassword.Text;
+
+            if (string.IsNullOrWhiteSpace(newPassword) || newPassword.Length < 6)
+            {
+                MessageBox.Show("Password must be at least 6 characters long.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (newPassword != confirmPassword)
+            {
+                MessageBox.Show("Passwords do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DBManager db = new DBManager();
+            db.UpdatePassword(frmForgotPassword.RecoveryEmail, newPassword);
+
+            MessageBox.Show("Password reset successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            frmLogin loginForm = new frmLogin();
+            loginForm.Show();
+            this.Hide();
+
+            frmForgotPassword.RecoveryEmail = null;
         }
     }
 }

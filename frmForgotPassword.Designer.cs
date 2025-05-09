@@ -30,10 +30,10 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.loginPanel = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpBirthdate = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,10 +56,10 @@
             // loginPanel
             // 
             this.loginPanel.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.loginPanel.Controls.Add(this.dateTimePicker1);
+            this.loginPanel.Controls.Add(this.dtpBirthdate);
             this.loginPanel.Controls.Add(this.label8);
             this.loginPanel.Controls.Add(this.label6);
-            this.loginPanel.Controls.Add(this.textBox2);
+            this.loginPanel.Controls.Add(this.txtEmail);
             this.loginPanel.Controls.Add(this.label5);
             this.loginPanel.Controls.Add(this.btnLogin);
             this.loginPanel.Location = new System.Drawing.Point(68, 130);
@@ -67,12 +67,12 @@
             this.loginPanel.Size = new System.Drawing.Size(328, 255);
             this.loginPanel.TabIndex = 6;
             // 
-            // dateTimePicker1
+            // dtpBirthdate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(57, 109);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(215, 22);
-            this.dateTimePicker1.TabIndex = 15;
+            this.dtpBirthdate.Location = new System.Drawing.Point(57, 109);
+            this.dtpBirthdate.Name = "dtpBirthdate";
+            this.dtpBirthdate.Size = new System.Drawing.Size(215, 22);
+            this.dtpBirthdate.TabIndex = 15;
             // 
             // label8
             // 
@@ -94,12 +94,12 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Email";
             // 
-            // textBox2
+            // txtEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(57, 41);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(213, 22);
-            this.textBox2.TabIndex = 10;
+            this.txtEmail.Location = new System.Drawing.Point(57, 41);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(213, 22);
+            this.txtEmail.TabIndex = 10;
             // 
             // label5
             // 
@@ -174,10 +174,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel loginPanel;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpBirthdate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label4;

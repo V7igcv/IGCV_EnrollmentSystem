@@ -127,6 +127,12 @@
   <data name="icons8-schedule-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-schedule-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="d108c73e823f7f39c7b4dfbed1ca7035" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\d108c73e823f7f39c7b4dfbed1ca7035.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-logout-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-logout-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-department-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-department-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,16 +172,13 @@
   <data name="icons8-course-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-course-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add a heading (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add a heading (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-report-card-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-report-card-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="d108c73e823f7f39c7b4dfbed1ca7035" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\d108c73e823f7f39c7b4dfbed1ca7035.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add a heading (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add a heading (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-logout-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-logout-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-users-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-users-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

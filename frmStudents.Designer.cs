@@ -30,14 +30,17 @@
         {
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDeleteStudent = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.phone = new System.Windows.Forms.TextBox();
+            this.age = new System.Windows.Forms.NumericUpDown();
+            this.SubmitStudent = new System.Windows.Forms.Button();
+            this.student_no = new System.Windows.Forms.TextBox();
+            this.address = new System.Windows.Forms.TextBox();
+            this.email = new System.Windows.Forms.TextBox();
+            this.lname = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,16 +48,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.fname = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.StudentsTable = new System.Windows.Forms.DataGridView();
             this.sideBar1 = new EDP_WinProject102.SideBar();
             this.topBar1 = new EDP_WinProject102.TopBar();
+            this.btnExportToExcel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.age)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentsTable)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -72,8 +75,12 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
+            this.panel1.Controls.Add(this.btnExportToExcel);
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.btnEdit);
+            this.panel1.Controls.Add(this.btnDeleteStudent);
             this.panel1.Controls.Add(this.panel18);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.StudentsTable);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(201, 84);
             this.panel1.Name = "panel1";
@@ -81,16 +88,51 @@
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(44, 363);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(231, 28);
+            this.txtSearch.TabIndex = 34;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEdit.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnEdit.Location = new System.Drawing.Point(671, 360);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(179, 36);
+            this.btnEdit.TabIndex = 33;
+            this.btnEdit.Text = "Edit Selected";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDeleteStudent
+            // 
+            this.btnDeleteStudent.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDeleteStudent.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnDeleteStudent.Location = new System.Drawing.Point(856, 359);
+            this.btnDeleteStudent.Name = "btnDeleteStudent";
+            this.btnDeleteStudent.Size = new System.Drawing.Size(179, 36);
+            this.btnDeleteStudent.TabIndex = 32;
+            this.btnDeleteStudent.Text = "Delete Selected";
+            this.btnDeleteStudent.UseVisualStyleBackColor = false;
+            this.btnDeleteStudent.Click += new System.EventHandler(this.btnDeleteStudent_Click);
+            // 
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel18.Controls.Add(this.numericUpDown2);
-            this.panel18.Controls.Add(this.numericUpDown1);
-            this.panel18.Controls.Add(this.button1);
-            this.panel18.Controls.Add(this.textBox7);
-            this.panel18.Controls.Add(this.textBox6);
-            this.panel18.Controls.Add(this.textBox4);
-            this.panel18.Controls.Add(this.textBox2);
+            this.panel18.Controls.Add(this.phone);
+            this.panel18.Controls.Add(this.age);
+            this.panel18.Controls.Add(this.SubmitStudent);
+            this.panel18.Controls.Add(this.student_no);
+            this.panel18.Controls.Add(this.address);
+            this.panel18.Controls.Add(this.email);
+            this.panel18.Controls.Add(this.lname);
             this.panel18.Controls.Add(this.label8);
             this.panel18.Controls.Add(this.label7);
             this.panel18.Controls.Add(this.label6);
@@ -98,73 +140,73 @@
             this.panel18.Controls.Add(this.label3);
             this.panel18.Controls.Add(this.label2);
             this.panel18.Controls.Add(this.label1);
-            this.panel18.Controls.Add(this.textBox1);
+            this.panel18.Controls.Add(this.fname);
             this.panel18.Controls.Add(this.label14);
             this.panel18.Location = new System.Drawing.Point(44, 67);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(991, 270);
             this.panel18.TabIndex = 10;
             // 
-            // numericUpDown2
+            // phone
             // 
-            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(401, 102);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(191, 28);
-            this.numericUpDown2.TabIndex = 30;
+            this.phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phone.Location = new System.Drawing.Point(401, 101);
+            this.phone.Name = "phone";
+            this.phone.Size = new System.Drawing.Size(191, 28);
+            this.phone.TabIndex = 30;
             // 
-            // numericUpDown1
+            // age
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(325, 101);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(57, 28);
-            this.numericUpDown1.TabIndex = 29;
+            this.age.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.age.Location = new System.Drawing.Point(325, 101);
+            this.age.Name = "age";
+            this.age.Size = new System.Drawing.Size(57, 28);
+            this.age.TabIndex = 29;
             // 
-            // button1
+            // SubmitStudent
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.button1.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(725, 215);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(202, 34);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SubmitStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.SubmitStudent.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitStudent.ForeColor = System.Drawing.SystemColors.Control;
+            this.SubmitStudent.Location = new System.Drawing.Point(725, 215);
+            this.SubmitStudent.Name = "SubmitStudent";
+            this.SubmitStudent.Size = new System.Drawing.Size(202, 34);
+            this.SubmitStudent.TabIndex = 28;
+            this.SubmitStudent.Text = "Submit";
+            this.SubmitStudent.UseVisualStyleBackColor = false;
+            this.SubmitStudent.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox7
+            // student_no
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(629, 169);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(298, 28);
-            this.textBox7.TabIndex = 27;
+            this.student_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.student_no.Location = new System.Drawing.Point(629, 169);
+            this.student_no.Name = "student_no";
+            this.student_no.Size = new System.Drawing.Size(298, 28);
+            this.student_no.TabIndex = 27;
             // 
-            // textBox6
+            // address
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(629, 101);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(298, 28);
-            this.textBox6.TabIndex = 26;
+            this.address.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.address.Location = new System.Drawing.Point(629, 101);
+            this.address.Name = "address";
+            this.address.Size = new System.Drawing.Size(298, 28);
+            this.address.TabIndex = 26;
             // 
-            // textBox4
+            // email
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(325, 169);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(267, 28);
-            this.textBox4.TabIndex = 24;
+            this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email.Location = new System.Drawing.Point(325, 169);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(267, 28);
+            this.email.TabIndex = 24;
             // 
-            // textBox2
+            // lname
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(51, 169);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(231, 28);
-            this.textBox2.TabIndex = 22;
+            this.lname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lname.Location = new System.Drawing.Point(51, 169);
+            this.lname.Name = "lname";
+            this.lname.Size = new System.Drawing.Size(231, 28);
+            this.lname.TabIndex = 22;
             // 
             // label8
             // 
@@ -239,13 +281,13 @@
             this.label1.Text = "First Name";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
-            // textBox1
+            // fname
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(51, 101);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(231, 28);
-            this.textBox1.TabIndex = 14;
+            this.fname.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fname.Location = new System.Drawing.Point(51, 101);
+            this.fname.Name = "fname";
+            this.fname.Size = new System.Drawing.Size(231, 28);
+            this.fname.TabIndex = 14;
             // 
             // label14
             // 
@@ -257,17 +299,17 @@
             this.label14.TabIndex = 13;
             this.label14.Text = "ADD STUDENT";
             // 
-            // dataGridView1
+            // StudentsTable
             // 
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(44, 374);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(991, 718);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.StudentsTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.StudentsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StudentsTable.Location = new System.Drawing.Point(44, 402);
+            this.StudentsTable.Name = "StudentsTable";
+            this.StudentsTable.RowHeadersWidth = 51;
+            this.StudentsTable.RowTemplate.Height = 24;
+            this.StudentsTable.Size = new System.Drawing.Size(991, 348);
+            this.StudentsTable.TabIndex = 9;
+            this.StudentsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // sideBar1
             // 
@@ -284,6 +326,19 @@
             this.topBar1.Size = new System.Drawing.Size(1097, 84);
             this.topBar1.TabIndex = 1;
             // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnExportToExcel.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportToExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnExportToExcel.Location = new System.Drawing.Point(856, 18);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Size = new System.Drawing.Size(179, 36);
+            this.btnExportToExcel.TabIndex = 42;
+            this.btnExportToExcel.Text = "Export To MS Excel";
+            this.btnExportToExcel.UseVisualStyleBackColor = false;
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
             // frmStudents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -298,13 +353,13 @@
             this.Name = "frmStudents";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Students";
+            this.Load += new System.EventHandler(this.frmStudents_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.age)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentsTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -315,10 +370,10 @@
         private TopBar topBar1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView StudentsTable;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox fname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -326,12 +381,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox student_no;
+        private System.Windows.Forms.TextBox address;
+        private System.Windows.Forms.TextBox email;
+        private System.Windows.Forms.TextBox lname;
+        private System.Windows.Forms.Button SubmitStudent;
+        private System.Windows.Forms.NumericUpDown age;
+        private System.Windows.Forms.TextBox phone;
+        private System.Windows.Forms.Button btnDeleteStudent;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnExportToExcel;
     }
 }

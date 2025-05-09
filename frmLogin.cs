@@ -30,9 +30,26 @@ namespace EDP_WinProject102
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            frmDashboard myform = new frmDashboard();
-            myform.Show();
-            this.Hide();
+            string email = txtEmail.Text.Trim();
+            string password = txtPassword.Text;
+
+            DBManager db = new DBManager();
+
+            if (db.AuthenticateUser(email, password))
+            {
+                Session.Email = email;
+                Session.FirstName = db.GetFirstName(email);
+
+                MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                frmDashboard myform = new frmDashboard();
+                myform.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Invalid email or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void loginPanel_Paint(object sender, PaintEventArgs e)

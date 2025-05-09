@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.loginPanel = new System.Windows.Forms.Panel();
+            this.dtpBirthdate = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.loginPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -54,24 +54,42 @@
             // loginPanel
             // 
             this.loginPanel.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.loginPanel.Controls.Add(this.dateTimePicker1);
+            this.loginPanel.Controls.Add(this.dtpBirthdate);
             this.loginPanel.Controls.Add(this.label8);
             this.loginPanel.Controls.Add(this.label7);
-            this.loginPanel.Controls.Add(this.textBox3);
+            this.loginPanel.Controls.Add(this.txtPassword);
             this.loginPanel.Controls.Add(this.label6);
-            this.loginPanel.Controls.Add(this.textBox2);
+            this.loginPanel.Controls.Add(this.txtEmail);
             this.loginPanel.Controls.Add(this.label3);
-            this.loginPanel.Controls.Add(this.textBox1);
+            this.loginPanel.Controls.Add(this.txtLastName);
             this.loginPanel.Controls.Add(this.label5);
             this.loginPanel.Controls.Add(this.btnLogin);
             this.loginPanel.Controls.Add(this.label1);
-            this.loginPanel.Controls.Add(this.txtPassword);
-            this.loginPanel.Controls.Add(this.txtUsername);
+            this.loginPanel.Controls.Add(this.txtConfirmPassword);
+            this.loginPanel.Controls.Add(this.txtFirstName);
             this.loginPanel.Controls.Add(this.label2);
             this.loginPanel.Location = new System.Drawing.Point(73, 54);
             this.loginPanel.Name = "loginPanel";
             this.loginPanel.Size = new System.Drawing.Size(328, 387);
             this.loginPanel.TabIndex = 6;
+            // 
+            // dtpBirthdate
+            // 
+            this.dtpBirthdate.Location = new System.Drawing.Point(55, 285);
+            this.dtpBirthdate.Name = "dtpBirthdate";
+            this.dtpBirthdate.Size = new System.Drawing.Size(215, 22);
+            this.dtpBirthdate.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(54, 266);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(109, 16);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Recovery Birth Date";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label7
             // 
@@ -83,12 +101,13 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "Password";
             // 
-            // textBox3
+            // txtPassword
             // 
-            this.textBox3.Location = new System.Drawing.Point(55, 183);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(213, 22);
-            this.textBox3.TabIndex = 12;
+            this.txtPassword.Location = new System.Drawing.Point(55, 183);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(213, 22);
+            this.txtPassword.TabIndex = 12;
             // 
             // label6
             // 
@@ -101,13 +120,13 @@
             this.label6.Text = "Email";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // textBox2
+            // txtEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(55, 132);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(213, 22);
-            this.textBox2.TabIndex = 10;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtEmail.Location = new System.Drawing.Point(55, 132);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(213, 22);
+            this.txtEmail.TabIndex = 10;
+            this.txtEmail.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
             // 
@@ -119,12 +138,12 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Last Name";
             // 
-            // textBox1
+            // txtLastName
             // 
-            this.textBox1.Location = new System.Drawing.Point(55, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(213, 22);
-            this.textBox1.TabIndex = 8;
+            this.txtLastName.Location = new System.Drawing.Point(55, 81);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(213, 22);
+            this.txtLastName.TabIndex = 8;
             // 
             // label5
             // 
@@ -160,21 +179,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name";
             // 
-            // txtPassword
+            // txtConfirmPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(55, 236);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(213, 22);
-            this.txtPassword.TabIndex = 3;
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(55, 236);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
+            this.txtConfirmPassword.Size = new System.Drawing.Size(213, 22);
+            this.txtConfirmPassword.TabIndex = 3;
+            this.txtConfirmPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
-            // txtUsername
+            // txtFirstName
             // 
-            this.txtUsername.Location = new System.Drawing.Point(55, 31);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(213, 22);
-            this.txtUsername.TabIndex = 2;
+            this.txtFirstName.Location = new System.Drawing.Point(55, 31);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(213, 22);
+            this.txtFirstName.TabIndex = 2;
             // 
             // label2
             // 
@@ -207,24 +226,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(451, 459);
             this.panel1.TabIndex = 8;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(54, 266);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(115, 16);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Recovery Birdth Date";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(55, 285);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(215, 22);
-            this.dateTimePicker1.TabIndex = 15;
             // 
             // pictureBox1
             // 
@@ -265,19 +266,19 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtConfirmPassword;
+        private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpBirthdate;
     }
 }

@@ -52,12 +52,16 @@
             this.btnStudents = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel10.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel10
@@ -360,11 +364,47 @@
             this.pictureBox1.TabIndex = 47;
             this.pictureBox1.TabStop = false;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.panel12);
+            this.panel1.Location = new System.Drawing.Point(11, 672);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(180, 1);
+            this.panel1.TabIndex = 46;
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel12.Location = new System.Drawing.Point(19, 15);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(203, 1);
+            this.panel12.TabIndex = 23;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.Image = global::EDP_WinProject102.Properties.Resources.icons8_users_24;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(0, 679);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(203, 54);
+            this.button1.TabIndex = 48;
+            this.button1.Text = "System Users";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SideBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel5);
@@ -392,6 +432,7 @@
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -422,5 +463,8 @@
         private System.Windows.Forms.Button btnDashboard;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Button button1;
     }
 }

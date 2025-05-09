@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnDeleteDept = new System.Windows.Forms.Button();
+            this.DepartmentsTable = new System.Windows.Forms.DataGridView();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SubmitDept = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.department = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.topBar1 = new EDP_WinProject102.TopBar();
             this.sideBar1 = new EDP_WinProject102.SideBar();
+            this.topBar1 = new EDP_WinProject102.TopBar();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepartmentsTable)).BeginInit();
             this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +50,9 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.btnDeleteDept);
+            this.panel1.Controls.Add(this.DepartmentsTable);
             this.panel1.Controls.Add(this.panel18);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(202, 84);
@@ -56,40 +60,54 @@
             this.panel1.Size = new System.Drawing.Size(1096, 746);
             this.panel1.TabIndex = 15;
             // 
-            // dataGridView1
+            // btnDeleteDept
             // 
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(44, 248);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(991, 718);
-            this.dataGridView1.TabIndex = 13;
+            this.btnDeleteDept.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDeleteDept.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteDept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnDeleteDept.Location = new System.Drawing.Point(856, 239);
+            this.btnDeleteDept.Name = "btnDeleteDept";
+            this.btnDeleteDept.Size = new System.Drawing.Size(179, 36);
+            this.btnDeleteDept.TabIndex = 33;
+            this.btnDeleteDept.Text = "Delete Selected";
+            this.btnDeleteDept.UseVisualStyleBackColor = false;
+            this.btnDeleteDept.Click += new System.EventHandler(this.btnDeleteDept_Click);
+            // 
+            // DepartmentsTable
+            // 
+            this.DepartmentsTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DepartmentsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DepartmentsTable.Location = new System.Drawing.Point(44, 281);
+            this.DepartmentsTable.Name = "DepartmentsTable";
+            this.DepartmentsTable.RowHeadersWidth = 51;
+            this.DepartmentsTable.RowTemplate.Height = 24;
+            this.DepartmentsTable.Size = new System.Drawing.Size(991, 473);
+            this.DepartmentsTable.TabIndex = 13;
             // 
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel18.Controls.Add(this.button1);
+            this.panel18.Controls.Add(this.SubmitDept);
             this.panel18.Controls.Add(this.label1);
-            this.panel18.Controls.Add(this.textBox1);
+            this.panel18.Controls.Add(this.department);
             this.panel18.Controls.Add(this.label14);
             this.panel18.Location = new System.Drawing.Point(44, 72);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(991, 148);
             this.panel18.TabIndex = 12;
             // 
-            // button1
+            // SubmitDept
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.button1.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(747, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(202, 34);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = false;
+            this.SubmitDept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.SubmitDept.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitDept.ForeColor = System.Drawing.SystemColors.Control;
+            this.SubmitDept.Location = new System.Drawing.Point(747, 80);
+            this.SubmitDept.Name = "SubmitDept";
+            this.SubmitDept.Size = new System.Drawing.Size(202, 34);
+            this.SubmitDept.TabIndex = 28;
+            this.SubmitDept.Text = "Submit";
+            this.SubmitDept.UseVisualStyleBackColor = false;
+            this.SubmitDept.Click += new System.EventHandler(this.SubmitDept_Click);
             // 
             // label1
             // 
@@ -101,13 +119,13 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Department Name";
             // 
-            // textBox1
+            // department
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(197, 85);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(287, 28);
-            this.textBox1.TabIndex = 14;
+            this.department.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.department.Location = new System.Drawing.Point(197, 85);
+            this.department.Name = "department";
+            this.department.Size = new System.Drawing.Size(287, 28);
+            this.department.TabIndex = 14;
             // 
             // label14
             // 
@@ -130,13 +148,6 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "DEPARTMENTS";
             // 
-            // topBar1
-            // 
-            this.topBar1.Location = new System.Drawing.Point(201, 0);
-            this.topBar1.Name = "topBar1";
-            this.topBar1.Size = new System.Drawing.Size(1097, 84);
-            this.topBar1.TabIndex = 16;
-            // 
             // sideBar1
             // 
             this.sideBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
@@ -144,6 +155,22 @@
             this.sideBar1.Name = "sideBar1";
             this.sideBar1.Size = new System.Drawing.Size(203, 831);
             this.sideBar1.TabIndex = 17;
+            // 
+            // topBar1
+            // 
+            this.topBar1.Location = new System.Drawing.Point(201, 0);
+            this.topBar1.Name = "topBar1";
+            this.topBar1.Size = new System.Drawing.Size(1097, 84);
+            this.topBar1.TabIndex = 16;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(44, 242);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(231, 28);
+            this.txtSearch.TabIndex = 36;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // frmDepartments
             // 
@@ -161,7 +188,7 @@
             this.Load += new System.EventHandler(this.frmDepartments_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepartmentsTable)).EndInit();
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             this.ResumeLayout(false);
@@ -171,14 +198,16 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DepartmentsTable;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SubmitDept;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox department;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label5;
         private TopBar topBar1;
         private SideBar sideBar1;
+        private System.Windows.Forms.Button btnDeleteDept;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }
