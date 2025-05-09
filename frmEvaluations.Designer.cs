@@ -34,6 +34,7 @@
             this.EvaluationsTable = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnExportToExcel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EvaluationsTable)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +59,7 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.btnExportToExcel);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.EvaluationsTable);
             this.panel1.Controls.Add(this.label5);
@@ -96,6 +98,19 @@
             this.txtSearch.TabIndex = 43;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnExportToExcel.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportToExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnExportToExcel.Location = new System.Drawing.Point(856, 63);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Size = new System.Drawing.Size(179, 36);
+            this.btnExportToExcel.TabIndex = 48;
+            this.btnExportToExcel.Text = "Export To MS Excel";
+            this.btnExportToExcel.UseVisualStyleBackColor = false;
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
             // frmEvaluations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -124,5 +139,6 @@
         private System.Windows.Forms.DataGridView EvaluationsTable;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnExportToExcel;
     }
 }

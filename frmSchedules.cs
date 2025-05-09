@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace EDP_WinProject102
 {
@@ -87,13 +89,13 @@ namespace EDP_WinProject102
 
                     // Set custom column headers
                     SchedulesTable.Columns["schedule_id"].HeaderText = "Schedule ID";
+                    SchedulesTable.Columns["course_id"].Visible = false;
                     SchedulesTable.Columns["course_name"].HeaderText = "Course Name";
+                    SchedulesTable.Columns["instructor_id"].Visible = false;
                     SchedulesTable.Columns["instructor_name"].HeaderText = "Instructor Name";
                     SchedulesTable.Columns["day_of_week"].HeaderText = "Day of Week";
                     SchedulesTable.Columns["start_time"].HeaderText = "Start Time";
                     SchedulesTable.Columns["end_time"].HeaderText = "End Time";
-                    SchedulesTable.Columns["course_id"].Visible = false;
-                    SchedulesTable.Columns["instructor_id"].Visible = false;
 
                     // Make column headers bold
                     SchedulesTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8, FontStyle.Bold);
@@ -300,6 +302,95 @@ namespace EDP_WinProject102
                 {
                     MessageBox.Show("Search failed: " + ex.Message);
                 }
+            }
+        }
+
+        private void btnExportToExcel_Click(object sender, EventArgs e)
+        {
+            string templatePath = Path.Combine(Application.StartupPath, "reportTemplate", "schedules_template.xlsx");
+
+            if (!File.Exists(templatePath))
+            {
+                MessageBox.Show($"Template file not found:\n{templatePath}", "Missing Template", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string folderPath = Path.Combine(Application.StartupPath, "generatedreports");
+            Directory.CreateDirectory(folderPath); // Ensure folder exists
+
+            DateTime now = DateTime.Now;
+            string formattedDate = now.ToString("yyyy-MM-dd-HH-mm-ss");
+            string newFileName = $"schedules-report-{formattedDate}.xlsx";
+            string outputPath = Path.Combine(folderPath, newFileName);
+
+            ExportToExcelTemplate(SchedulesTable, templatePath, outputPath);
+        }
+
+        private void ExportToExcelTemplate(DataGridView dgv, string templatePath, string newFilePath)
+        {
+            var excelApp = new Excel.Application();
+            if (excelApp == null)
+            {
+                MessageBox.Show("Excel is not installed!");
+                return;
+            }
+
+            Excel.Workbook workbook = null;
+            Excel.Worksheet worksheet = null;
+
+            try
+            {
+                workbook = excelApp.Workbooks.Open(templatePath);
+                worksheet = workbook.Worksheets[1];
+
+                int startRow = 3;
+
+                for (int i = 0; i < dgv.Rows.Count; i++)
+                {
+                    if (!dgv.Rows[i].IsNewRow)
+                    {
+                        for (int j = 0; j < dgv.Columns.Count; j++)
+                        {
+                            worksheet.Cells[startRow + i, j + 1] = dgv.Rows[i].Cells[j].Value?.ToString();
+                        }
+                    }
+                }
+
+                workbook.SaveAs(newFilePath);
+
+                MessageBox.Show($"Exported successfully to:\n{newFilePath}", "Export Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // OPTIONAL: Open Excel manually if you want
+                // System.Diagnostics.Process.Start(newFilePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error during export:\n" + ex.Message, "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Clean up properly
+                if (workbook != null)
+                {
+                    workbook.Close(false);
+                    Marshal.ReleaseComObject(workbook);
+                }
+
+                if (worksheet != null)
+                    Marshal.ReleaseComObject(worksheet);
+
+                if (excelApp != null)
+                {
+                    excelApp.Quit();
+                    Marshal.ReleaseComObject(excelApp);
+                }
+
+                workbook = null;
+                worksheet = null;
+                excelApp = null;
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
         }
     }

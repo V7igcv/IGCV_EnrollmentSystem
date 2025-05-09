@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnEditUser = new System.Windows.Forms.Button();
             this.btnDeleteUser = new System.Windows.Forms.Button();
             this.systemUsersTable = new System.Windows.Forms.DataGridView();
@@ -48,7 +49,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.sideBar1 = new EDP_WinProject102.SideBar();
             this.topBar1 = new EDP_WinProject102.TopBar();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnExportToExcel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemUsersTable)).BeginInit();
             this.panel18.SuspendLayout();
@@ -59,6 +60,7 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.btnExportToExcel);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.btnEditUser);
             this.panel1.Controls.Add(this.btnDeleteUser);
@@ -69,6 +71,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 746);
             this.panel1.TabIndex = 17;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(44, 353);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(231, 28);
+            this.txtSearch.TabIndex = 33;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnEditUser
             // 
@@ -265,14 +276,18 @@
             this.topBar1.Size = new System.Drawing.Size(1097, 84);
             this.topBar1.TabIndex = 1;
             // 
-            // txtSearch
+            // btnExportToExcel
             // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(44, 353);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(231, 28);
-            this.txtSearch.TabIndex = 33;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.btnExportToExcel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnExportToExcel.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportToExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnExportToExcel.Location = new System.Drawing.Point(856, 22);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Size = new System.Drawing.Size(179, 36);
+            this.btnExportToExcel.TabIndex = 42;
+            this.btnExportToExcel.Text = "Export To MS Excel";
+            this.btnExportToExcel.UseVisualStyleBackColor = false;
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // frmSystemUsers
             // 
@@ -320,5 +335,6 @@
         private System.Windows.Forms.Button btnDeleteUser;
         private System.Windows.Forms.Button btnEditUser;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnExportToExcel;
     }
 }
