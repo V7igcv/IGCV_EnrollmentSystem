@@ -13,6 +13,8 @@ namespace EDP_WinProject102
 {
     public partial class EditSystemUser : Form
     {
+        private readonly DBManager dbManager = new DBManager();
+
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -43,8 +45,7 @@ namespace EDP_WinProject102
                 return;
             }
 
-            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {

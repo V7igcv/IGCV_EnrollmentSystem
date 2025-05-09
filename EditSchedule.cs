@@ -13,6 +13,8 @@ namespace EDP_WinProject102
 {
     public partial class EditSchedule : Form
     {
+        private readonly DBManager dbManager = new DBManager();
+
         private int scheduleId;
         public EditSchedule(int scheduleId, int courseId, int instructorId, string dayOfWeek, TimeSpan startTime, TimeSpan endTime)
         {
@@ -52,8 +54,7 @@ namespace EDP_WinProject102
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string connStr = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connStr))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {

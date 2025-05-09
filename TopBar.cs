@@ -49,5 +49,10 @@ namespace EDP_WinProject102
             // Start the date/time updater if needed
             timer1.Start();
         }
+
+        private void panel13_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

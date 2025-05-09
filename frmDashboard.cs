@@ -13,6 +13,8 @@ namespace EDP_WinProject102
 {
     public partial class frmDashboard: Form
     {
+        private readonly DBManager dbManager = new DBManager();
+
         public frmDashboard()
         {
             InitializeComponent();
@@ -93,8 +95,7 @@ namespace EDP_WinProject102
         }
         private void LoadStudentPerCourseIntoGrid()
         {
-            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {
@@ -127,8 +128,7 @@ namespace EDP_WinProject102
         }
         private void LoadInstructorPerDepartmentIntoGrid()
         {
-            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {
@@ -163,8 +163,7 @@ namespace EDP_WinProject102
         }
         private void LoadStudentEnrollmentsIntoGrid()
         {
-            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {
@@ -199,8 +198,7 @@ namespace EDP_WinProject102
         }
         private void LoadSummaryCounts()
         {
-            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {

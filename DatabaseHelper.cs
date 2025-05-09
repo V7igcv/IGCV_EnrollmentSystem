@@ -11,8 +11,6 @@ namespace EDP_WinProject102
 {
     internal class DatabaseHelper
     {
-        private static string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-
         public static void LoadDepartmentsIntoComboBox(ComboBox comboBox)
         {
             LoadDataIntoComboBox(comboBox,
@@ -44,7 +42,7 @@ namespace EDP_WinProject102
         // Generic method to reduce repetition
         private static void LoadDataIntoComboBox(ComboBox comboBox, string query, string displayMember, string valueMember)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = new DBManager().GetConnection())
             {
                 try
                 {

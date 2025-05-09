@@ -14,6 +14,8 @@ namespace EDP_WinProject102
 {
     public partial class frmEvaluations : Form
     {
+        private readonly DBManager dbManager = new DBManager();
+
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);
         private const int EM_SETCUEBANNER = 0x1501;
@@ -31,8 +33,7 @@ namespace EDP_WinProject102
 
         private void LoadEvaluationsIntoGrid()
         {
-            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {
@@ -100,8 +101,7 @@ namespace EDP_WinProject102
 
         private void SearchEvaluations(string keyword)
         {
-            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {

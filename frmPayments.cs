@@ -14,6 +14,8 @@ namespace EDP_WinProject102
 {
     public partial class frmPayments : Form
     {
+        private readonly DBManager dbManager = new DBManager();
+
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);
         private const int EM_SETCUEBANNER = 0x1501;
@@ -37,8 +39,7 @@ namespace EDP_WinProject102
 
         private void LoadPaymentsIntoGrid()
         {
-            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {
@@ -106,9 +107,7 @@ namespace EDP_WinProject102
 
         private void AddPaymentToDatabase(string studentNumber, string courseName, decimal amountPaid)
         {
-            string connStr = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-
-            using (MySqlConnection conn = new MySqlConnection(connStr))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {
@@ -222,8 +221,7 @@ namespace EDP_WinProject102
 
         private void SoftDeleteUser(int userId)
         {
-            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {
@@ -257,8 +255,7 @@ namespace EDP_WinProject102
 
         private void SearchPayments(string keyword)
         {
-            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {

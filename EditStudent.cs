@@ -13,6 +13,8 @@ namespace EDP_WinProject102
 {
     public partial class EditStudent : Form
     {
+        private readonly DBManager dbManager = new DBManager();
+
         private int studentId;
         public EditStudent(int studentId, string firstName, string lastName, int age, string email, string phone, string address, string studentNumber)
         {
@@ -34,8 +36,7 @@ namespace EDP_WinProject102
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = dbManager.GetConnection())
             {
                 try
                 {
