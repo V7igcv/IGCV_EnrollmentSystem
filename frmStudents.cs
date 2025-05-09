@@ -357,7 +357,9 @@ namespace EDP_WinProject102
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
-            string templatePath = Path.Combine(Application.StartupPath, "reportTemplate", "students_template.xlsx");
+            //string templatePath = Path.Combine(Application.StartupPath, "reportTemplate", "students_template.xlsx");
+            string templatePath = Path.Combine(Application.StartupPath, @"..\..\reportTemplate", "students_template.xlsx");
+            templatePath = Path.GetFullPath(templatePath);
 
             if (!File.Exists(templatePath))
             {
@@ -365,7 +367,9 @@ namespace EDP_WinProject102
                 return;
             }
 
-            string folderPath = Path.Combine(Application.StartupPath, "generatedreports");
+            //string folderPath = Path.Combine(Application.StartupPath, "generatedreports");
+            string folderPath = Path.Combine(Application.StartupPath, @"..\..\generatedreports");
+            folderPath = Path.GetFullPath(folderPath);
             Directory.CreateDirectory(folderPath); // Ensure folder exists
 
             DateTime now = DateTime.Now;
