@@ -55,7 +55,7 @@ EDP_WinProject102/
 
 ## 🙋 Author
 Ian Gabriel C. Villame  
-BSIT 3rd Year  
+BSIT 3rd Year - Block B  
 
 **SQLahan: Enrollment System Project for EDP**  
 
