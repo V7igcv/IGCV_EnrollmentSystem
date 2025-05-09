@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDeleteTuition = new System.Windows.Forms.Button();
             this.TuitionsTable = new System.Windows.Forms.DataGridView();
             this.panel18 = new System.Windows.Forms.Panel();
             this.SubmitTuition = new System.Windows.Forms.Button();
@@ -42,8 +44,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.topBar1 = new EDP_WinProject102.TopBar();
             this.sideBar1 = new EDP_WinProject102.SideBar();
-            this.btnDeleteTuition = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TuitionsTable)).BeginInit();
             this.panel18.SuspendLayout();
@@ -54,6 +55,7 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnDeleteTuition);
             this.panel1.Controls.Add(this.TuitionsTable);
@@ -63,6 +65,32 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 746);
             this.panel1.TabIndex = 12;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEdit.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnEdit.Location = new System.Drawing.Point(671, 344);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(179, 36);
+            this.btnEdit.TabIndex = 40;
+            this.btnEdit.Text = "Edit Selected";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDeleteTuition
+            // 
+            this.btnDeleteTuition.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDeleteTuition.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteTuition.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnDeleteTuition.Location = new System.Drawing.Point(856, 344);
+            this.btnDeleteTuition.Name = "btnDeleteTuition";
+            this.btnDeleteTuition.Size = new System.Drawing.Size(179, 36);
+            this.btnDeleteTuition.TabIndex = 35;
+            this.btnDeleteTuition.Text = "Delete Selected";
+            this.btnDeleteTuition.UseVisualStyleBackColor = false;
+            this.btnDeleteTuition.Click += new System.EventHandler(this.btnDeleteTuition_Click);
             // 
             // TuitionsTable
             // 
@@ -194,31 +222,14 @@
             this.sideBar1.Size = new System.Drawing.Size(203, 831);
             this.sideBar1.TabIndex = 14;
             // 
-            // btnDeleteTuition
+            // txtSearch
             // 
-            this.btnDeleteTuition.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDeleteTuition.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteTuition.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.btnDeleteTuition.Location = new System.Drawing.Point(856, 344);
-            this.btnDeleteTuition.Name = "btnDeleteTuition";
-            this.btnDeleteTuition.Size = new System.Drawing.Size(179, 36);
-            this.btnDeleteTuition.TabIndex = 35;
-            this.btnDeleteTuition.Text = "Delete Selected";
-            this.btnDeleteTuition.UseVisualStyleBackColor = false;
-            this.btnDeleteTuition.Click += new System.EventHandler(this.btnDeleteTuition_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEdit.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.btnEdit.Location = new System.Drawing.Point(671, 344);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(179, 36);
-            this.btnEdit.TabIndex = 40;
-            this.btnEdit.Text = "Edit Selected";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(44, 347);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(231, 28);
+            this.txtSearch.TabIndex = 41;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // frmTuitions
             // 
@@ -261,5 +272,6 @@
         private System.Windows.Forms.Button SubmitTuition;
         private System.Windows.Forms.Button btnDeleteTuition;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

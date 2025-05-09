@@ -10,20 +10,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Runtime.InteropServices;
 
 namespace EDP_WinProject102
 {
     public partial class frmDepartments : Form
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);
+        private const int EM_SETCUEBANNER = 0x1501;
+
         public frmDepartments()
         {
             InitializeComponent();
             LoadDepartmentsIntoGrid();
+            this.Load += frmDepartments_Load;
         }
 
         private void frmDepartments_Load(object sender, EventArgs e)
         {
-
+            SendMessage(txtSearch.Handle, EM_SETCUEBANNER, 0, "Search...");
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -151,6 +157,61 @@ namespace EDP_WinProject102
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error while deleting: " + ex.Message);
+                }
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                LoadDepartmentsIntoGrid();
+            }
+            else
+            {
+                SearchDepartments(txtSearch.Text);
+            }
+        }
+
+        private void SearchDepartments(string keyword)
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                SELECT 
+                    department_id, 
+                    department_name 
+                FROM 
+                    departments 
+                WHERE 
+                    deleted_at IS NULL AND (
+                        CAST(department_id AS CHAR) LIKE @keyword
+                        OR department_name LIKE @keyword
+                    )";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    DepartmentsTable.DataSource = dt;
+
+                    // Set custom column headers
+                    DepartmentsTable.Columns["department_id"].HeaderText = "Department ID";
+                    DepartmentsTable.Columns["department_name"].HeaderText = "Department Name";
+
+                    // Style the headers
+                    DepartmentsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8, FontStyle.Bold);
+                    DepartmentsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message);
                 }
             }
         }

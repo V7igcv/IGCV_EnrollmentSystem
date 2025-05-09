@@ -30,7 +30,10 @@
         {
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDeleteStudent = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
+            this.phone = new System.Windows.Forms.TextBox();
             this.age = new System.Windows.Forms.NumericUpDown();
             this.SubmitStudent = new System.Windows.Forms.Button();
             this.student_no = new System.Windows.Forms.TextBox();
@@ -49,9 +52,7 @@
             this.StudentsTable = new System.Windows.Forms.DataGridView();
             this.sideBar1 = new EDP_WinProject102.SideBar();
             this.topBar1 = new EDP_WinProject102.TopBar();
-            this.phone = new System.Windows.Forms.TextBox();
-            this.btnDeleteStudent = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.age)).BeginInit();
@@ -73,6 +74,7 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnDeleteStudent);
             this.panel1.Controls.Add(this.panel18);
@@ -83,6 +85,32 @@
             this.panel1.Size = new System.Drawing.Size(1096, 746);
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEdit.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnEdit.Location = new System.Drawing.Point(671, 360);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(179, 36);
+            this.btnEdit.TabIndex = 33;
+            this.btnEdit.Text = "Edit Selected";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDeleteStudent
+            // 
+            this.btnDeleteStudent.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDeleteStudent.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnDeleteStudent.Location = new System.Drawing.Point(856, 359);
+            this.btnDeleteStudent.Name = "btnDeleteStudent";
+            this.btnDeleteStudent.Size = new System.Drawing.Size(179, 36);
+            this.btnDeleteStudent.TabIndex = 32;
+            this.btnDeleteStudent.Text = "Delete Selected";
+            this.btnDeleteStudent.UseVisualStyleBackColor = false;
+            this.btnDeleteStudent.Click += new System.EventHandler(this.btnDeleteStudent_Click);
             // 
             // panel18
             // 
@@ -107,6 +135,14 @@
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(991, 270);
             this.panel18.TabIndex = 10;
+            // 
+            // phone
+            // 
+            this.phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phone.Location = new System.Drawing.Point(401, 101);
+            this.phone.Name = "phone";
+            this.phone.Size = new System.Drawing.Size(191, 28);
+            this.phone.TabIndex = 30;
             // 
             // age
             // 
@@ -279,39 +315,14 @@
             this.topBar1.Size = new System.Drawing.Size(1097, 84);
             this.topBar1.TabIndex = 1;
             // 
-            // phone
+            // txtSearch
             // 
-            this.phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phone.Location = new System.Drawing.Point(401, 101);
-            this.phone.Name = "phone";
-            this.phone.Size = new System.Drawing.Size(191, 28);
-            this.phone.TabIndex = 30;
-            // 
-            // btnDeleteStudent
-            // 
-            this.btnDeleteStudent.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDeleteStudent.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.btnDeleteStudent.Location = new System.Drawing.Point(856, 359);
-            this.btnDeleteStudent.Name = "btnDeleteStudent";
-            this.btnDeleteStudent.Size = new System.Drawing.Size(179, 36);
-            this.btnDeleteStudent.TabIndex = 32;
-            this.btnDeleteStudent.Text = "Delete Selected";
-            this.btnDeleteStudent.UseVisualStyleBackColor = false;
-            this.btnDeleteStudent.Click += new System.EventHandler(this.btnDeleteStudent_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEdit.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.btnEdit.Location = new System.Drawing.Point(671, 360);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(179, 36);
-            this.btnEdit.TabIndex = 33;
-            this.btnEdit.Text = "Edit Selected";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(44, 363);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(231, 28);
+            this.txtSearch.TabIndex = 34;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // frmStudents
             // 
@@ -364,5 +375,6 @@
         private System.Windows.Forms.TextBox phone;
         private System.Windows.Forms.Button btnDeleteStudent;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

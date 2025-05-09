@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDeleteSchedule = new System.Windows.Forms.Button();
             this.SchedulesTable = new System.Windows.Forms.DataGridView();
             this.panel18 = new System.Windows.Forms.Panel();
             this.dayofweek = new System.Windows.Forms.ComboBox();
@@ -46,8 +48,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.sideBar1 = new EDP_WinProject102.SideBar();
             this.topBar1 = new EDP_WinProject102.TopBar();
-            this.btnDeleteSchedule = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SchedulesTable)).BeginInit();
             this.panel18.SuspendLayout();
@@ -58,6 +59,7 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnDeleteSchedule);
             this.panel1.Controls.Add(this.SchedulesTable);
@@ -67,6 +69,32 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 746);
             this.panel1.TabIndex = 17;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEdit.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnEdit.Location = new System.Drawing.Point(671, 362);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(179, 36);
+            this.btnEdit.TabIndex = 41;
+            this.btnEdit.Text = "Edit Selected";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDeleteSchedule
+            // 
+            this.btnDeleteSchedule.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDeleteSchedule.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteSchedule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnDeleteSchedule.Location = new System.Drawing.Point(856, 362);
+            this.btnDeleteSchedule.Name = "btnDeleteSchedule";
+            this.btnDeleteSchedule.Size = new System.Drawing.Size(179, 36);
+            this.btnDeleteSchedule.TabIndex = 38;
+            this.btnDeleteSchedule.Text = "Delete Selected";
+            this.btnDeleteSchedule.UseVisualStyleBackColor = false;
+            this.btnDeleteSchedule.Click += new System.EventHandler(this.btnDeleteSchedule_Click);
             // 
             // SchedulesTable
             // 
@@ -248,31 +276,14 @@
             this.topBar1.Size = new System.Drawing.Size(1097, 84);
             this.topBar1.TabIndex = 18;
             // 
-            // btnDeleteSchedule
+            // txtSearch
             // 
-            this.btnDeleteSchedule.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDeleteSchedule.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteSchedule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.btnDeleteSchedule.Location = new System.Drawing.Point(856, 362);
-            this.btnDeleteSchedule.Name = "btnDeleteSchedule";
-            this.btnDeleteSchedule.Size = new System.Drawing.Size(179, 36);
-            this.btnDeleteSchedule.TabIndex = 38;
-            this.btnDeleteSchedule.Text = "Delete Selected";
-            this.btnDeleteSchedule.UseVisualStyleBackColor = false;
-            this.btnDeleteSchedule.Click += new System.EventHandler(this.btnDeleteSchedule_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEdit.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.btnEdit.Location = new System.Drawing.Point(671, 362);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(179, 36);
-            this.btnEdit.TabIndex = 41;
-            this.btnEdit.Text = "Edit Selected";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(44, 365);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(231, 28);
+            this.txtSearch.TabIndex = 42;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // frmSchedules
             // 
@@ -319,5 +330,6 @@
         private System.Windows.Forms.DateTimePicker starttime;
         private System.Windows.Forms.Button btnDeleteSchedule;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

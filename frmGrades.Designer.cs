@@ -33,6 +33,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.GradesTable = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GradesTable)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.GradesTable);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(203, 84);
@@ -68,7 +70,7 @@
             // 
             this.GradesTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GradesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GradesTable.Location = new System.Drawing.Point(44, 73);
+            this.GradesTable.Location = new System.Drawing.Point(44, 102);
             this.GradesTable.Name = "GradesTable";
             this.GradesTable.RowHeadersWidth = 51;
             this.GradesTable.RowTemplate.Height = 24;
@@ -84,6 +86,15 @@
             this.label5.Size = new System.Drawing.Size(101, 40);
             this.label5.TabIndex = 9;
             this.label5.Text = "GRADES";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(44, 66);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(231, 28);
+            this.txtSearch.TabIndex = 38;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // frmGrades
             // 
@@ -112,5 +123,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView GradesTable;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

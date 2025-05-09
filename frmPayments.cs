@@ -8,20 +8,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace EDP_WinProject102
 {
     public partial class frmPayments : Form
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);
+        private const int EM_SETCUEBANNER = 0x1501;
+
         public frmPayments()
         {
             InitializeComponent();
             LoadPaymentsIntoGrid();
+            this.Load += frmPayments_Load;
         }
 
         private void frmPayments_Load(object sender, EventArgs e)
         {
-
+            SendMessage(txtSearch.Handle, EM_SETCUEBANNER, 0, "Search...");
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -233,6 +239,70 @@ namespace EDP_WinProject102
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error while deleting: " + ex.Message);
+                }
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                LoadPaymentsIntoGrid();
+            }
+            else
+            {
+                SearchPayments(txtSearch.Text);
+            }
+        }
+
+        private void SearchPayments(string keyword)
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                SELECT 
+                    p.payment_id, 
+                    CONCAT(s.student_fname, ' ', s.student_lname) AS full_name, 
+                    p.amount_paid, 
+                    p.payment_date, 
+                    tf.academic_year
+                FROM payments p
+                JOIN students s ON p.student_id = s.student_id
+                JOIN tuition_fees tf ON p.fee_id = tf.fee_id
+                WHERE 
+                    s.deleted_at IS NULL AND tf.deleted_at IS NULL AND (
+                        CAST(p.payment_id AS CHAR) LIKE @keyword OR
+                        CONCAT(s.student_fname, ' ', s.student_lname) LIKE @keyword OR
+                        CAST(p.amount_paid AS CHAR) LIKE @keyword OR
+                        p.payment_date LIKE @keyword OR
+                        tf.academic_year LIKE @keyword
+                    )";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    PaymentsTable.DataSource = dt;
+
+                    // Set custom column headers
+                    PaymentsTable.Columns["payment_id"].HeaderText = "Payment ID";
+                    PaymentsTable.Columns["full_name"].HeaderText = "Student Name";
+                    PaymentsTable.Columns["amount_paid"].HeaderText = "Amount Paid (₱)";
+                    PaymentsTable.Columns["payment_date"].HeaderText = "Payment Date";
+                    PaymentsTable.Columns["academic_year"].HeaderText = "Academic Year";
+
+                    PaymentsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8, FontStyle.Bold);
+                    PaymentsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message);
                 }
             }
         }

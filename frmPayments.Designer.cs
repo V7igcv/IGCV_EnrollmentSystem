@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDeletePayment = new System.Windows.Forms.Button();
             this.PaymentsTable = new System.Windows.Forms.DataGridView();
             this.panel18 = new System.Windows.Forms.Panel();
+            this.student_no = new System.Windows.Forms.TextBox();
             this.date = new System.Windows.Forms.DateTimePicker();
             this.SubmitPayment = new System.Windows.Forms.Button();
+            this.course = new System.Windows.Forms.TextBox();
             this.amount = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,9 +45,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.topBar1 = new EDP_WinProject102.TopBar();
             this.sideBar1 = new EDP_WinProject102.SideBar();
-            this.student_no = new System.Windows.Forms.TextBox();
-            this.course = new System.Windows.Forms.TextBox();
-            this.btnDeletePayment = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PaymentsTable)).BeginInit();
             this.panel18.SuspendLayout();
@@ -55,6 +56,7 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.btnDeletePayment);
             this.panel1.Controls.Add(this.PaymentsTable);
             this.panel1.Controls.Add(this.panel18);
@@ -64,6 +66,19 @@
             this.panel1.Size = new System.Drawing.Size(1096, 746);
             this.panel1.TabIndex = 13;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnDeletePayment
+            // 
+            this.btnDeletePayment.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDeletePayment.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeletePayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnDeletePayment.Location = new System.Drawing.Point(856, 336);
+            this.btnDeletePayment.Name = "btnDeletePayment";
+            this.btnDeletePayment.Size = new System.Drawing.Size(179, 36);
+            this.btnDeletePayment.TabIndex = 36;
+            this.btnDeletePayment.Text = "Delete Selected";
+            this.btnDeletePayment.UseVisualStyleBackColor = false;
+            this.btnDeletePayment.Click += new System.EventHandler(this.btnDeletePayment_Click);
             // 
             // PaymentsTable
             // 
@@ -94,6 +109,14 @@
             this.panel18.Size = new System.Drawing.Size(991, 248);
             this.panel18.TabIndex = 12;
             // 
+            // student_no
+            // 
+            this.student_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.student_no.Location = new System.Drawing.Point(51, 103);
+            this.student_no.Name = "student_no";
+            this.student_no.Size = new System.Drawing.Size(298, 28);
+            this.student_no.TabIndex = 34;
+            // 
             // date
             // 
             this.date.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,6 +139,14 @@
             this.SubmitPayment.Text = "Submit";
             this.SubmitPayment.UseVisualStyleBackColor = false;
             this.SubmitPayment.Click += new System.EventHandler(this.SubmitPayment_Click);
+            // 
+            // course
+            // 
+            this.course.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.course.Location = new System.Drawing.Point(389, 103);
+            this.course.Name = "course";
+            this.course.Size = new System.Drawing.Size(298, 28);
+            this.course.TabIndex = 27;
             // 
             // amount
             // 
@@ -201,34 +232,14 @@
             this.sideBar1.Size = new System.Drawing.Size(203, 831);
             this.sideBar1.TabIndex = 15;
             // 
-            // student_no
+            // txtSearch
             // 
-            this.student_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.student_no.Location = new System.Drawing.Point(51, 103);
-            this.student_no.Name = "student_no";
-            this.student_no.Size = new System.Drawing.Size(298, 28);
-            this.student_no.TabIndex = 34;
-            // 
-            // course
-            // 
-            this.course.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.course.Location = new System.Drawing.Point(389, 103);
-            this.course.Name = "course";
-            this.course.Size = new System.Drawing.Size(298, 28);
-            this.course.TabIndex = 27;
-            // 
-            // btnDeletePayment
-            // 
-            this.btnDeletePayment.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDeletePayment.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeletePayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.btnDeletePayment.Location = new System.Drawing.Point(856, 336);
-            this.btnDeletePayment.Name = "btnDeletePayment";
-            this.btnDeletePayment.Size = new System.Drawing.Size(179, 36);
-            this.btnDeletePayment.TabIndex = 36;
-            this.btnDeletePayment.Text = "Delete Selected";
-            this.btnDeletePayment.UseVisualStyleBackColor = false;
-            this.btnDeletePayment.Click += new System.EventHandler(this.btnDeletePayment_Click);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(44, 339);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(231, 28);
+            this.txtSearch.TabIndex = 42;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // frmPayments
             // 
@@ -272,5 +283,6 @@
         private System.Windows.Forms.TextBox student_no;
         private System.Windows.Forms.TextBox course;
         private System.Windows.Forms.Button btnDeletePayment;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

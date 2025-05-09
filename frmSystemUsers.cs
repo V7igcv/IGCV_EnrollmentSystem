@@ -8,20 +8,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace EDP_WinProject102
 {
     public partial class frmSystemUsers : Form
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);
+        private const int EM_SETCUEBANNER = 0x1501;
+
         public frmSystemUsers()
         {
             InitializeComponent();
             LoadUsersIntoGrid();
+            this.Load += frmSystemUsers_Load;
         }
 
         private void frmSystemUsers_Load(object sender, EventArgs e)
         {
-
+            SendMessage(txtSearch.Handle, EM_SETCUEBANNER, 0, "Search...");
         }
         private void LoadUsersIntoGrid()
         {
@@ -174,6 +180,51 @@ namespace EDP_WinProject102
             else
             {
                 MessageBox.Show("Please select a user to edit.");
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                LoadUsersIntoGrid();
+            }
+            else
+            {
+                SearchUsers(txtSearch.Text);
+            }
+        }
+
+        private void SearchUsers(string keyword)
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"SELECT id, first_name, last_name, email, recovery_birthdate
+                             FROM users
+                             WHERE deleted_at IS NULL
+                               AND (CAST(id AS CHAR) LIKE @keyword
+                                    OR first_name LIKE @keyword
+                                    OR last_name LIKE @keyword
+                                    OR email LIKE @keyword
+                                    OR DATE_FORMAT(recovery_birthdate, '%Y-%m-%d') LIKE @keyword)";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    systemUsersTable.DataSource = dt;
+
+                    // Optionally reset column headers again (if needed)
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message);
+                }
             }
         }
     }

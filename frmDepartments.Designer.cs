@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDeleteDept = new System.Windows.Forms.Button();
             this.DepartmentsTable = new System.Windows.Forms.DataGridView();
             this.panel18 = new System.Windows.Forms.Panel();
             this.SubmitDept = new System.Windows.Forms.Button();
@@ -38,7 +39,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.sideBar1 = new EDP_WinProject102.SideBar();
             this.topBar1 = new EDP_WinProject102.TopBar();
-            this.btnDeleteDept = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentsTable)).BeginInit();
             this.panel18.SuspendLayout();
@@ -49,6 +50,7 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.btnDeleteDept);
             this.panel1.Controls.Add(this.DepartmentsTable);
             this.panel1.Controls.Add(this.panel18);
@@ -57,6 +59,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 746);
             this.panel1.TabIndex = 15;
+            // 
+            // btnDeleteDept
+            // 
+            this.btnDeleteDept.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDeleteDept.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteDept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnDeleteDept.Location = new System.Drawing.Point(856, 239);
+            this.btnDeleteDept.Name = "btnDeleteDept";
+            this.btnDeleteDept.Size = new System.Drawing.Size(179, 36);
+            this.btnDeleteDept.TabIndex = 33;
+            this.btnDeleteDept.Text = "Delete Selected";
+            this.btnDeleteDept.UseVisualStyleBackColor = false;
+            this.btnDeleteDept.Click += new System.EventHandler(this.btnDeleteDept_Click);
             // 
             // DepartmentsTable
             // 
@@ -148,18 +163,14 @@
             this.topBar1.Size = new System.Drawing.Size(1097, 84);
             this.topBar1.TabIndex = 16;
             // 
-            // btnDeleteDept
+            // txtSearch
             // 
-            this.btnDeleteDept.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDeleteDept.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteDept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.btnDeleteDept.Location = new System.Drawing.Point(856, 239);
-            this.btnDeleteDept.Name = "btnDeleteDept";
-            this.btnDeleteDept.Size = new System.Drawing.Size(179, 36);
-            this.btnDeleteDept.TabIndex = 33;
-            this.btnDeleteDept.Text = "Delete Selected";
-            this.btnDeleteDept.UseVisualStyleBackColor = false;
-            this.btnDeleteDept.Click += new System.EventHandler(this.btnDeleteDept_Click);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(44, 242);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(231, 28);
+            this.txtSearch.TabIndex = 36;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // frmDepartments
             // 
@@ -197,5 +208,6 @@
         private TopBar topBar1;
         private SideBar sideBar1;
         private System.Windows.Forms.Button btnDeleteDept;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

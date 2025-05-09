@@ -9,17 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Runtime.InteropServices;
 
 namespace EDP_WinProject102
 {
     public partial class frmEnrollments : Form
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);
+        private const int EM_SETCUEBANNER = 0x1501;
+
         public frmEnrollments()
         {
             InitializeComponent();
             LoadEnrollmentsIntoGrid();
             DatabaseHelper.LoadCoursesIntoComboBox(course);
             student_no.KeyPress += student_no_KeyPress;
+            this.Load += frmEnrollments_Load;
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -34,7 +40,7 @@ namespace EDP_WinProject102
 
         private void frmEnrollments_Load(object sender, EventArgs e)
         {
-
+            SendMessage(txtSearch.Handle, EM_SETCUEBANNER, 0, "Search...");
         }
 
         private void LoadEnrollmentsIntoGrid()
@@ -217,6 +223,70 @@ namespace EDP_WinProject102
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error while deleting: " + ex.Message);
+                }
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                LoadEnrollmentsIntoGrid();
+            }
+            else
+            {
+                SearchEnrollments(txtSearch.Text);
+            }
+        }
+
+        private void SearchEnrollments(string keyword)
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                SELECT 
+                    e.enrollment_id,
+                    CONCAT(s.student_fname, ' ', s.student_lname) AS student_name,
+                    c.course_name,
+                    e.enrollment_date
+                FROM enrollments e
+                JOIN students s ON e.student_id = s.student_id
+                JOIN courses c ON e.course_id = c.course_id
+                WHERE 
+                    s.deleted_at IS NULL 
+                    AND c.deleted_at IS NULL 
+                    AND (
+                        CAST(e.enrollment_id AS CHAR) LIKE @keyword OR
+                        CONCAT(s.student_fname, ' ', s.student_lname) LIKE @keyword OR
+                        c.course_name LIKE @keyword OR
+                        CAST(e.enrollment_date AS CHAR) LIKE @keyword
+                    )";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    EnrollmentsTable.DataSource = dt;
+
+                    // Set custom column headers
+                    EnrollmentsTable.Columns["enrollment_id"].HeaderText = "Enrollment ID";
+                    EnrollmentsTable.Columns["student_name"].HeaderText = "Student Name";
+                    EnrollmentsTable.Columns["course_name"].HeaderText = "Course Name";
+                    EnrollmentsTable.Columns["enrollment_date"].HeaderText = "Enrollment Date";
+
+                    // Style the headers
+                    EnrollmentsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8, FontStyle.Bold);
+                    EnrollmentsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message);
                 }
             }
         }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,17 +15,22 @@ namespace EDP_WinProject102
 {
     public partial class frmInstructors : Form
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);
+        private const int EM_SETCUEBANNER = 0x1501;
+
         public frmInstructors()
         {
             InitializeComponent();
             LoadInstructorsIntoGrid();
             phone.KeyPress += phone_KeyPress;
             DatabaseHelper.LoadDepartmentsIntoComboBox(department);
+            this.Load += frmInstructors_Load;
         }
 
         private void frmInstructors_Load(object sender, EventArgs e)
         {
-            
+            SendMessage(txtSearch.Handle, EM_SETCUEBANNER, 0, "Search...");
         }
         private void LoadInstructorsIntoGrid()
         {
@@ -202,5 +208,73 @@ namespace EDP_WinProject102
                 MessageBox.Show("Please select an instructor to edit.");
             }
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                LoadInstructorsIntoGrid();
+            }
+            else
+            {
+                SearchInstructors(txtSearch.Text);
+            }
+        }
+
+        private void SearchInstructors(string keyword)
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                SELECT 
+                    i.instructor_id, 
+                    i.instructor_fname, 
+                    i.instructor_lname, 
+                    i.email, 
+                    i.phone, 
+                    i.department_id, 
+                    d.department_name
+                FROM instructors i
+                JOIN departments d ON i.department_id = d.department_id
+                WHERE i.deleted_at IS NULL AND (
+                    CAST(i.instructor_id AS CHAR) LIKE @keyword OR
+                    i.instructor_fname LIKE @keyword OR
+                    i.instructor_lname LIKE @keyword OR
+                    i.email LIKE @keyword OR
+                    i.phone LIKE @keyword OR
+                    d.department_name LIKE @keyword
+                )";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    InstructorsTable.DataSource = dt;
+
+                    // Set custom column headers
+                    InstructorsTable.Columns["instructor_id"].HeaderText = "Instructor ID";
+                    InstructorsTable.Columns["instructor_fname"].HeaderText = "First Name";
+                    InstructorsTable.Columns["instructor_lname"].HeaderText = "Last Name";
+                    InstructorsTable.Columns["email"].HeaderText = "Email";
+                    InstructorsTable.Columns["phone"].HeaderText = "Phone Number";
+                    InstructorsTable.Columns["department_name"].HeaderText = "Department";
+                    InstructorsTable.Columns["department_id"].Visible = false;
+
+                    InstructorsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8, FontStyle.Bold);
+                    InstructorsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message);
+                }
+            }
+        }
+
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDeleteCourse = new System.Windows.Forms.Button();
             this.CoursesTable = new System.Windows.Forms.DataGridView();
             this.panel18 = new System.Windows.Forms.Panel();
             this.department = new System.Windows.Forms.ComboBox();
@@ -40,7 +41,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.topBar1 = new EDP_WinProject102.TopBar();
             this.sideBar1 = new EDP_WinProject102.SideBar();
-            this.btnDeleteCourse = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CoursesTable)).BeginInit();
             this.panel18.SuspendLayout();
@@ -51,6 +52,7 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.btnDeleteCourse);
             this.panel1.Controls.Add(this.CoursesTable);
             this.panel1.Controls.Add(this.panel18);
@@ -59,6 +61,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 746);
             this.panel1.TabIndex = 14;
+            // 
+            // btnDeleteCourse
+            // 
+            this.btnDeleteCourse.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDeleteCourse.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteCourse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.btnDeleteCourse.Location = new System.Drawing.Point(856, 254);
+            this.btnDeleteCourse.Name = "btnDeleteCourse";
+            this.btnDeleteCourse.Size = new System.Drawing.Size(179, 36);
+            this.btnDeleteCourse.TabIndex = 33;
+            this.btnDeleteCourse.Text = "Delete Selected";
+            this.btnDeleteCourse.UseVisualStyleBackColor = false;
+            this.btnDeleteCourse.Click += new System.EventHandler(this.btnDeleteCourse_Click);
             // 
             // CoursesTable
             // 
@@ -171,18 +186,14 @@
             this.sideBar1.Size = new System.Drawing.Size(203, 831);
             this.sideBar1.TabIndex = 16;
             // 
-            // btnDeleteCourse
+            // txtSearch
             // 
-            this.btnDeleteCourse.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDeleteCourse.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteCourse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
-            this.btnDeleteCourse.Location = new System.Drawing.Point(856, 254);
-            this.btnDeleteCourse.Name = "btnDeleteCourse";
-            this.btnDeleteCourse.Size = new System.Drawing.Size(179, 36);
-            this.btnDeleteCourse.TabIndex = 33;
-            this.btnDeleteCourse.Text = "Delete Selected";
-            this.btnDeleteCourse.UseVisualStyleBackColor = false;
-            this.btnDeleteCourse.Click += new System.EventHandler(this.btnDeleteCourse_Click);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(44, 257);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(231, 28);
+            this.txtSearch.TabIndex = 35;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // frmCourses
             // 
@@ -222,5 +233,6 @@
         private SideBar sideBar1;
         private System.Windows.Forms.ComboBox department;
         private System.Windows.Forms.Button btnDeleteCourse;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

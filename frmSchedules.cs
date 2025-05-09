@@ -8,21 +8,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace EDP_WinProject102
 {
     public partial class frmSchedules : Form
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);
+        private const int EM_SETCUEBANNER = 0x1501;
         public frmSchedules()
         {
             InitializeComponent();
             LoadSchedulesIntoGrid();
             LoadComboBoxData();
+            this.Load += frmSchedules_Load;
         }
 
         private void frmSchedules_Load(object sender, EventArgs e)
         {
-
+            SendMessage(txtSearch.Handle, EM_SETCUEBANNER, 0, "Search...");
         }
 
         private void LoadComboBoxData()
@@ -229,6 +234,74 @@ namespace EDP_WinProject102
             else
             {
                 MessageBox.Show("Please select a schedule to edit.");
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                LoadSchedulesIntoGrid();
+            }
+            else
+            {
+                SearchSchedules(txtSearch.Text);
+            }
+        }
+
+        private void SearchSchedules(string keyword)
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                SELECT 
+                    s.schedule_id,
+                    c.course_id,
+                    c.course_name,
+                    i.instructor_id,
+                    CONCAT(i.instructor_fname, ' ', i.instructor_lname) AS instructor_name, 
+                    s.day_of_week, 
+                    s.start_time, 
+                    s.end_time
+                FROM schedules s
+                JOIN courses c ON s.course_id = c.course_id
+                JOIN instructors i ON s.instructor_id = i.instructor_id
+                WHERE s.deleted_at IS NULL AND (
+                    CAST(s.schedule_id AS CHAR) LIKE @keyword OR
+                    c.course_name LIKE @keyword OR
+                    CONCAT(i.instructor_fname, ' ', i.instructor_lname) LIKE @keyword OR
+                    s.day_of_week LIKE @keyword
+                )";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    SchedulesTable.DataSource = dt;
+
+                    // Set custom column headers
+                    SchedulesTable.Columns["schedule_id"].HeaderText = "Schedule ID";
+                    SchedulesTable.Columns["course_name"].HeaderText = "Course Name";
+                    SchedulesTable.Columns["instructor_name"].HeaderText = "Instructor Name";
+                    SchedulesTable.Columns["day_of_week"].HeaderText = "Day of Week";
+                    SchedulesTable.Columns["start_time"].HeaderText = "Start Time";
+                    SchedulesTable.Columns["end_time"].HeaderText = "End Time";
+                    SchedulesTable.Columns["course_id"].Visible = false;
+                    SchedulesTable.Columns["instructor_id"].Visible = false;
+
+                    SchedulesTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8, FontStyle.Bold);
+                    SchedulesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message);
+                }
             }
         }
     }

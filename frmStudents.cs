@@ -8,15 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace EDP_WinProject102
 {
     public partial class frmStudents : Form
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);
+        private const int EM_SETCUEBANNER = 0x1501;
         public frmStudents()
         {
             InitializeComponent();
             LoadStudentsIntoGrid();
+            this.Load += frmStudents_Load;
 
             // Attach the KeyPress event handlers
             phone.KeyPress += phone_KeyPress;
@@ -87,7 +92,7 @@ namespace EDP_WinProject102
 
         private void frmStudents_Load(object sender, EventArgs e)
         {
-
+            SendMessage(txtSearch.Handle, EM_SETCUEBANNER, 0, "Search...");
         }
         private void LoadStudentsIntoGrid()
         {
@@ -266,6 +271,87 @@ namespace EDP_WinProject102
             else
             {
                 MessageBox.Show("Please select a student to edit.");
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                LoadStudentsIntoGrid();
+            }
+            else
+            {
+                SearchStudents(txtSearch.Text);
+            }
+        }
+
+        private void SearchStudents(string keyword)
+        {
+            string connectionString = "server=localhost;user=root;database=enrollment;port=3306;password=villamecantos974;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                SELECT 
+                    student_id, 
+                    student_fname, 
+                    student_lname, 
+                    age, 
+                    email, 
+                    phone, 
+                    address, 
+                    student_number,
+                    GetTotalTuition(student_id) AS total_tuition,
+                    GetOutstandingBalance(student_id) AS outstanding_balance
+                FROM 
+                    students
+                WHERE 
+                    deleted_at IS NULL
+                    AND (
+                        CAST(student_id AS CHAR) LIKE @keyword OR
+                        student_fname LIKE @keyword OR
+                        student_lname LIKE @keyword OR
+                        email LIKE @keyword OR
+                        phone LIKE @keyword OR
+                        student_number LIKE @keyword
+                    )";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    StudentsTable.DataSource = dt;
+
+                    // Re-apply column headers (optional, based on your existing LoadStudentsIntoGrid)
+                    StudentsTable.Columns["student_id"].HeaderText = "Student ID";
+                    StudentsTable.Columns["student_fname"].HeaderText = "First Name";
+                    StudentsTable.Columns["student_lname"].HeaderText = "Last Name";
+                    StudentsTable.Columns["age"].HeaderText = "Age";
+                    StudentsTable.Columns["email"].HeaderText = "Email";
+                    StudentsTable.Columns["phone"].HeaderText = "Phone Number";
+                    StudentsTable.Columns["address"].HeaderText = "Address";
+                    StudentsTable.Columns["student_number"].HeaderText = "Student Number";
+                    StudentsTable.Columns["total_tuition"].HeaderText = "Total Tuition (₱)";
+                    StudentsTable.Columns["outstanding_balance"].HeaderText = "Outstanding Balance (₱)";
+
+                    StudentsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8, FontStyle.Bold);
+                    StudentsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                    int maxHeight = 900;
+                    int desiredHeight = StudentsTable.ColumnHeadersHeight +
+                        StudentsTable.Rows.GetRowsHeight(DataGridViewElementStates.Visible);
+                    StudentsTable.Height = Math.Min(desiredHeight, maxHeight);
+                    StudentsTable.ScrollBars = ScrollBars.Vertical;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message);
+                }
             }
         }
     }
