@@ -53,6 +53,38 @@ EDP_WinProject102/
 - MySQL Back-End Integration
 - Basic UI Design with Validation
 
+## ⚠️ Before You Install SQLahan (Download the Installer included in the project repository named "SQLahan_Installer.exe")
+To ensure SQLahan works correctly, please follow these requirements before running the installer:  
+
+✅ MySQL Setup Requirements  
+1. Make sure MySQL Server 8.0 is installed on your laptop.
+2. One of the following must be true:
+   - MySQL is installed in the default folder:
+     C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe
+     OR
+     C:\Program Files (x86)\MySQL\MySQL Server 8.0\bin\mysql.exe
+   - OR the mysql.exe command is available in your system’s PATH
+     (e.g., installed via MySQL Workbench and properly configured).
+3. Your MySQL root account must:
+   - Exist
+   - use the password: villamecantos974
+   - Not require additional authentication (no 2FA or socket auth)
+
+💡 Why This Is Required
+The installer will attempt to:
+- Create a new database named enrollment
+- Automatically import the SQL file Villame_SQLahan_Enrollment.sql
+
+This step will fail if:
+- MySQL is not found
+- The password or user is incorrect
+- MySQL is not installed or configured properly
+
+✅ After Ensuring the Above:
+- Run the installer SQLahan_Installer.exe.
+- The database will be set up automatically.
+- Launch the app from the desktop or Start Menu.
+
 ## 🙋 Author
 Ian Gabriel C. Villame  
 BSIT 3rd Year - Block B  
